@@ -2,18 +2,31 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Navbar from "./components/Navbar.jsx";
+import Albums from "./pages/Albums.jsx";
+import Artists from "./pages/Artists.jsx";
+import Genres from "./pages/Genres.jsx";
+import Cart from "./pages/Cart.jsx";
+import Home from "./pages/Home.jsx";
+import LandingPage from "./pages/LandingPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
+    children: [
+      { index: true, element: <LandingPage /> },
+      { path: "albums", element: <Albums /> },
+      { path: "artists", element: <Artists /> },
+      { path: "genres", element: <Genres /> },
+      { path: "cart", element: <Cart /> },
+    ],
   },
-  { path: "products" },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}></RouterProvider>
   </React.StrictMode>
 );
