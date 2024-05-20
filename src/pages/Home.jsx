@@ -12,17 +12,63 @@ export const useAppContext = () => useContext(AppContext);
 
 const Home = () => {
   const [cart, setCart] = useState([
-    "4iWPBUkjEtpk5hzErpq8WA",
-    "2bYCNZfxZrTUv1CHXkz2d2",
+    { id: "4iWPBUkjEtpk5hzErpq8WA", quantity: 1 },
+    { id: "2bYCNZfxZrTUv1CHXkz2d2", quantity: 3 },
+    { id: "0n7dd40ERs4ucG5KarwZxM", quantity: 4 },
   ]);
 
   const addToCart = (item) => {
-    setCart([...cart, item]);
+    setCart([...cart, { id: item, quantity: 1 }]);
     toast("item added to cart");
     console.log(cart);
   };
+
+  const removeFromCart = (item) => {
+    const cartItems = cart;
+    const newCart = cartItems.filter((album) => album.id !== item);
+    setCart(newCart);
+  };
+
+  const addItem = (item) => {
+    const cartItems = cart;
+    setCart(
+      cartItems.map((cartItem) => {
+        if (cartItem.id === item)
+          return { id: cartItem.id, quantity: cartItem.quantity + 1 };
+        else return cartItem;
+      })
+    );
+  };
+
+  const removeItem = (item) => {
+    const cartItems = cart;
+    const quantity = cartItems.filter((album) => album.id === item)[0].quantity;
+    if (quantity === 1) removeFromCart(item);
+    else {
+      setCart(
+        cartItems.map((cartItem) => {
+          if (cartItem.id === item)
+            return { id: cartItem.id, quantity: cartItem.quantity - 1 };
+          else return cartItem;
+        })
+      );
+    }
+  };
+
+  const emptyCart = () => {
+    setCart([]);
+  };
   return (
-    <AppContext.Provider value={{ cart: cart, addToCart: addToCart }}>
+    <AppContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        emptyCart,
+        removeItem,
+        addItem,
+      }}
+    >
       <div className="bg-amber-50">
         <Navbar />
         <Outlet />

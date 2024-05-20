@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useAppContext } from "../pages/Home";
 
 const CartItem = ({ item }) => {
   const [album, setAlbum] = useState();
   const [loading, setIsLoading] = useState(true);
   const apiKey = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN;
+  const { cart, removeFromCart, removeItem, addItem } = useAppContext();
+  const quantity = cart.filter((cartItem) => cartItem.id === item)[0].quantity;
 
   const fetchAlbum = async () => {
     const config = {
@@ -17,7 +20,8 @@ const CartItem = ({ item }) => {
 
     try {
       const response = await axios(config);
-      setAlbum(response.data);
+      const album = response.data;
+      setAlbum({ ...album, quantity });
       setIsLoading(false);
     } catch (error) {
       console.error("Error making request:", error);
@@ -31,7 +35,6 @@ const CartItem = ({ item }) => {
 
   if (loading) return <div>loading</div>;
   if (!loading) {
-    console.log(album);
     const img = album.images[2].url;
     const name = album.name;
     const artist = album.artists[0].name;
@@ -44,7 +47,12 @@ const CartItem = ({ item }) => {
         </div>
         <div>
           <p>price</p>
-          <p>quantity</p>
+          <p onClick={() => removeItem(item)}>decrement</p>
+          <p>{quantity}</p>
+          <p onClick={() => addItem(item)}>increment</p>
+        </div>
+        <div>
+          <p onClick={() => removeFromCart(item)}>remove</p>
         </div>
       </div>
     );
