@@ -18,6 +18,7 @@ const Albums = () => {
     try {
       const response = await axios(config);
       setAlbums(response.data.albums.items);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error making request:", error);
     }
@@ -26,7 +27,6 @@ const Albums = () => {
   useEffect(() => {
     fetchAlbums();
     console.log(albums);
-    setIsLoading(false);
   }, []);
 
   console.log(albums);
