@@ -1,11 +1,11 @@
 const Album = ({ img, name, tracks, date, artist }) => {
   return (
-    <article>
-      <img src={img} alt="" />
-      <div>{name}</div>
-      <div>{artist}</div>
-      <div>{date}</div>
-      <div>{tracks}</div>
+    <article className="max-w-48 border-2 border-gray-900 rounded-md bg-slate-50">
+      <img className="" src={img} alt="" />
+      <div className="p-2">
+        <div className="text-base">{name}</div>
+        <div className="text-gray-500">{artist}</div>
+      </div>
     </article>
   );
 };
