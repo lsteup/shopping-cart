@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { AlbumsCat } from "../components/AlbumsCat";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
@@ -30,10 +30,7 @@ const Albums = () => {
 
   useEffect(() => {
     fetchAlbums();
-    console.log(albums);
   }, []);
-
-  console.log(albums);
 
   if (loading) return <div>Loading</div>;
   return (

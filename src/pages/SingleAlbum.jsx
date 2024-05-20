@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useAppContext } from "./Home";
+import { ToastContainer } from "react-toastify";
 
 const SingleAlbum = (props) => {
+  const { addToCart } = useAppContext();
+
   const id = window.location.href.split("/")[4];
-  console.log(id);
   const [album, setAlbum] = useState("");
   const [loading, setIsLoading] = useState(true);
   const apiKey = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN;
@@ -19,7 +22,6 @@ const SingleAlbum = (props) => {
 
     try {
       const response = await axios(config);
-      console.log(response.data);
       setAlbum(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -39,9 +41,11 @@ const SingleAlbum = (props) => {
     const img = album.images[0].url;
     const artist = album.artists[0].name;
     const tracks = album.tracks.items;
+    const id = album.id;
 
     return (
       <article className="p-10 flex gap-10 flex-wrap justify-center content-center">
+        <ToastContainer />
         <img className="border-2 border-gray-900 max-h-80" src={img} alt="" />
         <section className="border-2 border-gray-900 max-w-[600px] min-w-[340px] grow p-3">
           <div className="flex place-content-between">
@@ -55,7 +59,6 @@ const SingleAlbum = (props) => {
             <div className="divide-y">
               <div></div>
               {tracks.map((track) => {
-                console.log(track);
                 return (
                   <div className="flex gap-5" key={track.track_number}>
                     <p className="text-gray-500">{track.track_number}</p>
@@ -68,7 +71,7 @@ const SingleAlbum = (props) => {
           </div>
           <div className="flex place-content-between mt-3">
             <p>quantity</p>
-            <p>add to cart</p>
+            <p onClick={() => addToCart(id)}>add to cart</p>
           </div>
         </section>
       </article>
