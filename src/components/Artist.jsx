@@ -34,9 +34,9 @@ const Artist = ({ id }) => {
     const img = artist.images[1].url;
     const name = artist.name;
     return (
-      <section>
-        <img src={img} alt="" />
-        <div>{name}</div>
+      <section className="max-w-48 border-2 border-gray-900 bg-slate-50">
+        <img className="border-b-2 border-gray-900" src={img} alt="" />
+        <div className="p-2">{name}</div>
       </section>
     );
   }

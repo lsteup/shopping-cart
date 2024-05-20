@@ -33,6 +33,12 @@ const Artists = () => {
   }, []);
 
   if (loading) return <div>Loading</div>;
-  return artists.map((artist) => <Artist key={artist} id={artist} />);
+  return (
+    <div className="bg-amber-50 p-10 flex gap-10 flex-wrap justify-center">
+      {artists.map((artist) => (
+        <Artist key={artist} id={artist} />
+      ))}
+    </div>
+  );
 };
 export default Artists;
