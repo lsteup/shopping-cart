@@ -12,13 +12,13 @@ export const useAppContext = () => useContext(AppContext);
 
 const Home = () => {
   const [cart, setCart] = useState([
-    { id: "4iWPBUkjEtpk5hzErpq8WA", quantity: 1 },
-    { id: "2bYCNZfxZrTUv1CHXkz2d2", quantity: 3 },
-    { id: "0n7dd40ERs4ucG5KarwZxM", quantity: 4 },
+    { id: "4iWPBUkjEtpk5hzErpq8WA", quantity: 1, price: 25 },
+    { id: "2bYCNZfxZrTUv1CHXkz2d2", quantity: 3, price: 36 },
+    { id: "0n7dd40ERs4ucG5KarwZxM", quantity: 4, price: 21 },
   ]);
 
-  const addToCart = (item) => {
-    setCart([...cart, { id: item, quantity: 1 }]);
+  const addToCart = ({ id, quantity, price }) => {
+    setCart([...cart, { id: id, quantity, price }]);
     toast("item added to cart");
     console.log(cart);
   };
@@ -34,7 +34,11 @@ const Home = () => {
     setCart(
       cartItems.map((cartItem) => {
         if (cartItem.id === item)
-          return { id: cartItem.id, quantity: cartItem.quantity + 1 };
+          return {
+            id: cartItem.id,
+            quantity: cartItem.quantity + 1,
+            price: cartItem.price,
+          };
         else return cartItem;
       })
     );
@@ -48,7 +52,11 @@ const Home = () => {
       setCart(
         cartItems.map((cartItem) => {
           if (cartItem.id === item)
-            return { id: cartItem.id, quantity: cartItem.quantity - 1 };
+            return {
+              id: cartItem.id,
+              quantity: cartItem.quantity - 1,
+              price: cartItem.price,
+            };
           else return cartItem;
         })
       );

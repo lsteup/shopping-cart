@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { useAppContext } from "./Home";
 import { ToastContainer } from "react-toastify";
 
-const SingleAlbum = (props) => {
+const SingleAlbum = () => {
+  let price = (Math.random() * 26 + 25).toFixed(0);
   const { addToCart } = useAppContext();
+  const [quantity, setQuantity] = useState(1);
 
   const id = window.location.href.split("/")[4];
   const [album, setAlbum] = useState("");
@@ -43,6 +45,10 @@ const SingleAlbum = (props) => {
     const tracks = album.tracks.items;
     const id = album.id;
 
+    const decrement = () => {
+      if (quantity !== 1) setQuantity(quantity - 1);
+    };
+
     return (
       <article className="p-10 flex gap-10 flex-wrap justify-center content-center">
         <ToastContainer />
@@ -53,7 +59,7 @@ const SingleAlbum = (props) => {
               <p className="font-semibold text-xl ">{name}</p>
               <p className="text-lg text-gray-500">{artist}</p>
             </div>
-            <p>price</p>
+            <p>{price}</p>
           </div>
           <div className="mt-3">
             <div className="divide-y">
@@ -70,8 +76,20 @@ const SingleAlbum = (props) => {
             </div>
           </div>
           <div className="flex place-content-between mt-3">
-            <p>quantity</p>
-            <p onClick={() => addToCart(id)}>add to cart</p>
+            {quantity > 1 && <p onClick={() => decrement()}>decrement</p>}
+            <p>{quantity}</p>
+            <p onClick={() => setQuantity(quantity + 1)}>increment</p>
+            <p
+              onClick={() =>
+                addToCart({
+                  quantity,
+                  id: album.id,
+                  price: price,
+                })
+              }
+            >
+              add to cart
+            </p>
           </div>
         </section>
       </article>

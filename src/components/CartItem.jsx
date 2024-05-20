@@ -21,7 +21,15 @@ const CartItem = ({ item }) => {
     try {
       const response = await axios(config);
       const album = response.data;
-      setAlbum({ ...album, quantity });
+      const cartItems = cart;
+      const price = cartItems.filter((cartItem) => cartItem.id === album.id)[0]
+        .price;
+
+      setAlbum({
+        ...album,
+        quantity,
+        price,
+      });
       setIsLoading(false);
     } catch (error) {
       console.error("Error making request:", error);
@@ -46,7 +54,7 @@ const CartItem = ({ item }) => {
           <p>{artist}</p>
         </div>
         <div>
-          <p>price</p>
+          <p>{album.price}</p>
           <p onClick={() => removeItem(item)}>decrement</p>
           <p>{quantity}</p>
           <p onClick={() => addItem(item)}>increment</p>
