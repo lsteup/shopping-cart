@@ -29,6 +29,8 @@ const Albums = () => {
     setIsLoading(false);
   }, []);
 
+  console.log(albums);
+
   if (loading) return <div>Loading</div>;
   return <AlbumsCat albums={albums}></AlbumsCat>;
 };

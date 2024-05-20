@@ -10,6 +10,7 @@ import Genres from "./pages/Genres.jsx";
 import Cart from "./pages/Cart.jsx";
 import Home from "./pages/Home.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
+import SingleAlbum from "./pages/SingleAlbum.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "artists", element: <Artists /> },
       { path: "genres", element: <Genres /> },
       { path: "cart", element: <Cart /> },
+      { path: "albums/:albumId", element: <SingleAlbum /> },
     ],
   },
 ]);

@@ -9,6 +9,7 @@ export const AlbumsCat = ({ albums }) => {
         const date = album.release_date;
         const img = album.images[0].url;
         const tracks = album.total_tracks;
+        const id = album.id;
         return (
           <Album
             img={img}
@@ -16,6 +17,8 @@ export const AlbumsCat = ({ albums }) => {
             artist={artist}
             date={date}
             tracks={tracks}
+            id={id}
+            key={id}
           />
         );
       })}
