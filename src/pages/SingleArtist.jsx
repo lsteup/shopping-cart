@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Album from "../components/Album";
+import AlbumsThumb from "../components/AlbumsThumb";
 
 const SingleArtist = () => {
   const id = window.location.href.split("/")[4];
@@ -59,20 +60,12 @@ const SingleArtist = () => {
     console.log(albums);
 
     return (
-      <section className="p-10">
-        <div>{name}</div>
-        <img src={img} alt="" />
-        <section>
-          {albums.map((album) => (
-            <Album
-              img={album.images[1].url}
-              name={album.name}
-              artist={album.artists[0].name}
-              id={album.id}
-              key={album.id}
-            />
-          ))}
-        </section>
+      <section className="p-10 bg-amber-50">
+        <div className="flex justify-around items-center mb-10 ">
+          <h1 className="text-4xl">{name}</h1>
+          <img className="border-2 border-gray-900" src={img} alt="" />
+        </div>
+        <AlbumsThumb albums={albums} />
       </section>
     );
   }
