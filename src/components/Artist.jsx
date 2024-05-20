@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Artist = ({ id }) => {
   const [artist, setArtist] = useState();
@@ -34,10 +35,13 @@ const Artist = ({ id }) => {
     const img = artist.images[1].url;
     const name = artist.name;
     return (
-      <section className="max-w-48 border-2 border-gray-900 bg-slate-50">
+      <Link
+        to={artist.id}
+        className="max-w-48 border-2 border-gray-900 bg-slate-50"
+      >
         <img className="border-b-2 border-gray-900" src={img} alt="" />
         <div className="p-2">{name}</div>
-      </section>
+      </Link>
     );
   }
 };

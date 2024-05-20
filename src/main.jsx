@@ -11,6 +11,7 @@ import Cart from "./pages/Cart.jsx";
 import Home from "./pages/Home.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import SingleAlbum from "./pages/SingleAlbum.jsx";
+import SingleArtist from "./pages/SingleArtist.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: "genres", element: <Genres /> },
       { path: "cart", element: <Cart /> },
       { path: "albums/:albumId", element: <SingleAlbum /> },
+      { path: "artists/:artistId", element: <SingleArtist /> },
     ],
   },
 ]);

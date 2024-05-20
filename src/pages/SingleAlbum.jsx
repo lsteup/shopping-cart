@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 const SingleAlbum = (props) => {
   const id = window.location.href.split("/")[4];
+  console.log(id);
   const [album, setAlbum] = useState("");
   const [loading, setIsLoading] = useState(true);
   const apiKey = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN;
