@@ -5,10 +5,10 @@ import axios from "axios";
 
 const Home = () => {
   return (
-    <>
+    <div className="bg-amber-50">
       <Navbar />
       <Outlet />
-    </>
+    </div>
   );
 };
 export default Home;
