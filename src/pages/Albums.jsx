@@ -9,7 +9,7 @@ const Albums = () => {
   const fetchAlbums = async () => {
     const config = {
       method: "get",
-      url: "https://api.spotify.com/v1/browse/new-releases",
+      url: "https://api.spotify.com/v1/browse/new-releases?limit=50",
       headers: {
         Authorization: `Bearer ${apiKey}`,
       },

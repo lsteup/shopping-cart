@@ -7,14 +7,15 @@ const Navbar = () => {
         <li className="grow ">
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/genres">Genres</Link>
-        </li>
+
         <li>
           <Link to="artists">Artists</Link>
         </li>
         <li>
           <Link to="albums">Albums</Link>
+        </li>
+        <li>
+          <Link to="new">New Releases</Link>
         </li>
         <li>
           <Link to="cart">My Cart</Link>

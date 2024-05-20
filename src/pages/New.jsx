@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { AlbumsCat } from "../components/AlbumsCat";
 import axios from "axios";
-import Artist from "../components/Artist";
 
-const Artists = () => {
-  const [artists, setArtists] = useState([]);
+const New = () => {
+  const [albums, setAlbums] = useState([]);
   const [loading, setIsLoading] = useState(true);
   const apiKey = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN;
-  const fetchArtists = async () => {
+  const fetchAlbums = async () => {
     const config = {
       method: "get",
-      url: "https://api.spotify.com/v1/browse/new-releases?limit=50",
+      url: "https://api.spotify.com/v1/browse/new-releases?limit=10",
       headers: {
         Authorization: `Bearer ${apiKey}`,
       },
@@ -18,10 +17,7 @@ const Artists = () => {
 
     try {
       const response = await axios(config);
-      const artistsList = response.data.albums.items.map(
-        (item) => item.artists[0].id
-      );
-      setArtists(artistsList);
+      setAlbums(response.data.albums.items);
       setIsLoading(false);
     } catch (error) {
       console.error("Error making request:", error);
@@ -29,16 +25,13 @@ const Artists = () => {
   };
 
   useEffect(() => {
-    fetchArtists();
+    fetchAlbums();
+    console.log(albums);
   }, []);
 
+  console.log(albums);
+
   if (loading) return <div>Loading</div>;
-  return (
-    <div className="bg-amber-50 p-10 flex gap-10 flex-wrap justify-center">
-      {artists.map((artist) => (
-        <Artist key={artist} id={artist} />
-      ))}
-    </div>
-  );
+  return <AlbumsCat albums={albums}></AlbumsCat>;
 };
-export default Artists;
+export default New;
