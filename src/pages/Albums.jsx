@@ -5,6 +5,7 @@ import SearchBar from "../components/SearchBar";
 
 const Albums = () => {
   const [albums, setAlbums] = useState([]);
+  const [allAlbums, setAllAlbums] = useState([]);
   const [loading, setIsLoading] = useState(true);
   const apiKey = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN;
   const fetchAlbums = async () => {
@@ -22,6 +23,7 @@ const Albums = () => {
         a.name.localeCompare(b.name)
       );
       setAlbums(newAlbums);
+      setAllAlbums(newAlbums);
       setIsLoading(false);
     } catch (error) {
       console.error("Error making request:", error);
@@ -32,10 +34,17 @@ const Albums = () => {
     fetchAlbums();
   }, []);
 
+  const handleInput = (search) => {
+    const newAlbums = allAlbums.filter((album) =>
+      album.name.toLowerCase().startsWith(search.toLowerCase())
+    );
+    setAlbums(newAlbums);
+  };
+
   if (loading) return <div>Loading</div>;
   return (
     <div className="bg-amber-50 p-4">
-      <SearchBar />
+      <SearchBar handleInput={handleInput} />
       <AlbumsCat albums={albums}></AlbumsCat>
     </div>
   );

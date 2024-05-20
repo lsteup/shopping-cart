@@ -30,15 +30,11 @@ const New = () => {
 
   useEffect(() => {
     fetchAlbums();
-    console.log(albums);
   }, []);
-
-  console.log(albums);
 
   if (loading) return <div>Loading</div>;
   return (
     <div className="bg-amber-50 p-4">
-      <SearchBar />
       <AlbumsCat albums={albums}></AlbumsCat>
     </div>
   );
