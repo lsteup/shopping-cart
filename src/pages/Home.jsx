@@ -11,7 +11,10 @@ export const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 const Home = () => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([
+    "4iWPBUkjEtpk5hzErpq8WA",
+    "2bYCNZfxZrTUv1CHXkz2d2",
+  ]);
 
   const addToCart = (item) => {
     setCart([...cart, item]);

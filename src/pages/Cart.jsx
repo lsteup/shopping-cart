@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useAppContext } from "./Home";
 import CartItem from "../components/CartItem";
 
@@ -11,6 +11,8 @@ const Cart = () => {
       {cart.map((item) => {
         return <CartItem item={item} />;
       })}
+      <p>empty cart</p>
+      <button>place order</button>
     </div>
   );
 };
