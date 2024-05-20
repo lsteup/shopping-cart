@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AlbumsCat } from "../components/AlbumsCat";
 import axios from "axios";
+import SearchBar from "../components/SearchBar";
 
 const New = () => {
   const [albums, setAlbums] = useState([]);
@@ -17,7 +18,10 @@ const New = () => {
 
     try {
       const response = await axios(config);
-      setAlbums(response.data.albums.items);
+      const newAlbums = response.data.albums.items.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+      setAlbums(newAlbums);
       setIsLoading(false);
     } catch (error) {
       console.error("Error making request:", error);
@@ -32,6 +36,11 @@ const New = () => {
   console.log(albums);
 
   if (loading) return <div>Loading</div>;
-  return <AlbumsCat albums={albums}></AlbumsCat>;
+  return (
+    <div className="bg-amber-50 p-4">
+      <SearchBar />
+      <AlbumsCat albums={albums}></AlbumsCat>
+    </div>
+  );
 };
 export default New;

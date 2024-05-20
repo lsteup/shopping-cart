@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AlbumsCat } from "../components/AlbumsCat";
 import axios from "axios";
 import Artist from "../components/Artist";
+import SearchBar from "../components/SearchBar";
 
 const Artists = () => {
   const [artists, setArtists] = useState([]);
@@ -19,9 +20,11 @@ const Artists = () => {
     try {
       const response = await axios(config);
       const artistsList = response.data.albums.items.map(
-        (item) => item.artists[0].id
+        (item) => item.artists[0]
       );
-      setArtists(artistsList);
+      artistsList.sort((a, b) => a.name.localeCompare(b.name));
+      const newArtists = artistsList.map((artist) => artist.id);
+      setArtists(newArtists);
       setIsLoading(false);
     } catch (error) {
       console.error("Error making request:", error);
@@ -32,13 +35,15 @@ const Artists = () => {
     fetchArtists();
   }, []);
 
-  if (loading) return <div>Loading</div>;
   return (
-    <div className="bg-amber-50 p-10 flex gap-10 flex-wrap justify-center">
-      {artists.map((artist) => (
-        <Artist key={artist} id={artist} />
-      ))}
-    </div>
+    <article className="bg-amber-50 p-4">
+      <SearchBar />
+      <div className="bg-amber-50 p-10 flex gap-10 flex-wrap justify-center">
+        {artists.map((artist) => (
+          <Artist key={artist} id={artist} />
+        ))}
+      </div>
+    </article>
   );
 };
 export default Artists;
