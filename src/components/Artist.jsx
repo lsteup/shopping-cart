@@ -31,7 +31,6 @@ const Artist = ({ id }) => {
 
   if (loading) return <div>loading</div>;
   if (!loading) {
-    console.log(artist);
     const img = artist.images[1].url;
     const name = artist.name;
     return (
