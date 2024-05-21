@@ -58,7 +58,11 @@ const Artists = () => {
           text="Explore our comprehensive artist directory and uncover the discography of your favorite musicians. From legends to emerging stars, dive into the world of your beloved artists."
         />
         <SearchBar handleInput={handleInput} />
-        <div className="bg-amber-50 p-10 flex gap-10 flex-wrap justify-center">
+        {artists.length == 0 && (
+          <div className="p-4 text-lg text-zinc-700">No Artists found ...</div>
+        )}
+
+        <div className="bg-orange-50 p-10 flex gap-10 flex-wrap justify-center">
           {artists.map((artist) => (
             <Artist key={artist.id} id={artist.id} />
           ))}
