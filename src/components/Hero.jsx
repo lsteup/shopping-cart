@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import record from "/Users/louisasteup/Desktop/shopping-cart/src/images/victrola-record-players-R4Rdi0EfBws-unsplash.jpg";
+import Button from "./Button";
 
 const Hero = () => {
   return (
@@ -27,12 +28,7 @@ const Hero = () => {
           lover. Whether you're a seasoned audiophile or a casual listener,
           you'll find something to spark your passion for sound.
         </p>
-        <Link
-          to="albums"
-          className="p-4 bg-orange-500 text-zinc-100 border-2 border-zinc-950 rounded-lg max-w-48 text-lg font-semibold flex align-middle justify-center hover:bg-orange-700"
-        >
-          Explore Albums
-        </Link>
+        <Button link="albums" text="Explore Albums" />
       </div>
     </div>
   );
