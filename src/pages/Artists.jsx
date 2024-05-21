@@ -3,6 +3,7 @@ import { AlbumsCat } from "../components/AlbumsCat";
 import axios from "axios";
 import Artist from "../components/Artist";
 import SearchBar from "../components/SearchBar";
+import Title from "../components/Title";
 
 const Artists = () => {
   const [artists, setArtists] = useState([]);
@@ -51,7 +52,11 @@ const Artists = () => {
     };
 
     return (
-      <article className="bg-amber-50 p-4">
+      <article className="bg-orange-50 p-4">
+        <Title
+          title="Artists"
+          text="Explore our comprehensive artist directory and uncover the discography of your favorite musicians. From legends to emerging stars, dive into the world of your beloved artists."
+        />
         <SearchBar handleInput={handleInput} />
         <div className="bg-amber-50 p-10 flex gap-10 flex-wrap justify-center">
           {artists.map((artist) => (

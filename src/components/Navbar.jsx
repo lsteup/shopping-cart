@@ -77,7 +77,7 @@ const Navbar = () => {
       </nav>
 
       <nav className="hidden md:block bg-orange-100 p-4 lg:p-6 border-b-2 border-zinc-900">
-        <ul className="flex font-semibold items-center gap-6 text-lg lg:text-xl">
+        <ul className="flex font-semibold items-center gap-6 lg:gap-8 text-lg lg:text-xl">
           <li className="grow ">
             <Link className="grow block " to="/">
               <IoHomeOutline className="hover:scale-110 lg:hidden" size="3em" />
@@ -110,7 +110,7 @@ const Navbar = () => {
               className="hover:underline decoration-2 underline-offset-4 decoration-orange-500  "
               to="new"
             >
-              New Releases
+              New
             </Link>
           </li>
           <li>
