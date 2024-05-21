@@ -77,7 +77,7 @@ const Home = () => {
         addItem,
       }}
     >
-      <div className="bg-amber-50">
+      <div className="bg-orange-50 h-screen">
         <Navbar />
         <Outlet />
       </div>

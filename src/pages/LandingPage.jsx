@@ -3,7 +3,7 @@ import Hero from "../components/Hero";
 
 const LandingPage = () => {
   return (
-    <div className="p-5">
+    <div className="p-5 bg-orange-50">
       <Hero />
       <CTA slogan="Stay Ahead of the Beat" search="New Releases" link="/new" />
       <CTA
