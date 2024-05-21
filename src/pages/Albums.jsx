@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { AlbumsCat } from "../components/AlbumsCat";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
+import Title from "../components/Title";
 
 const Albums = () => {
   const [albums, setAlbums] = useState([]);
@@ -11,7 +12,7 @@ const Albums = () => {
   const fetchAlbums = async () => {
     const config = {
       method: "get",
-      url: "https://api.spotify.com/v1/browse/new-releases?limit=50",
+      url: "https://api.spotify.com/v1/browse/new-releases?limit=30",
       headers: {
         Authorization: `Bearer ${apiKey}`,
       },
@@ -43,8 +44,13 @@ const Albums = () => {
 
   if (loading) return <div>Loading</div>;
   return (
-    <div className="bg-amber-50 p-4">
+    <div className="bg-orange-50 p-4">
+      <Title
+        title="Albums"
+        text="Journey through our extensive catalog of albums, where every record tells a story. From iconic classics to contemporary must-haves, there's an album waiting for you."
+      />
       <SearchBar handleInput={handleInput} />
+
       <AlbumsCat albums={albums}></AlbumsCat>
     </div>
   );

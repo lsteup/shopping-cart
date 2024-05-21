@@ -4,9 +4,9 @@ const Album = ({ img, name, tracks, date, artist, id }) => {
   return (
     <Link
       to={`/albums/${id}`}
-      className="max-w-48 border-2 border-gray-900 bg-slate-50"
+      className="hover:shadlow-3xl hover:scale-110 max-w-48 border border-gray-900 bg-slate-50 shadow-sm"
     >
-      <img className="border-b-2 border-gray-900" src={img} alt="" />
+      <img className="border-b border-gray-900" src={img} alt="" />
       <div className="p-2">
         <div className="text-base">{name}</div>
         <div className="text-gray-500">{artist}</div>
