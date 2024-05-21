@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useAppContext } from "../pages/Home";
+import { IoAddCircleOutline } from "react-icons/io5";
+import { GrSubtractCircle } from "react-icons/gr";
 
 const CartItem = ({ item }) => {
   const [album, setAlbum] = useState();
@@ -47,20 +49,23 @@ const CartItem = ({ item }) => {
     const name = album.name;
     const artist = album.artists[0].name;
     return (
-      <div className="flex gap-4 justify-start m-4 border-2 border-slate-900 p-2 items-center">
-        <img src={img} alt="" />
+      <div className="flex gap-4 justify-start my-4 items-center text-xs">
+        <img className="border border-zinc-950" src={img} alt="" />
         <div className="grow">
-          <p>{name}</p>
-          <p>{artist}</p>
+          <p className="text-semibold">{name}</p>
+          <p className="text-zinc-500">{artist}</p>
         </div>
-        <div>
-          <p>{album.price}</p>
-          <p onClick={() => removeItem(item)}>decrement</p>
-          <p>{quantity}</p>
-          <p onClick={() => addItem(item)}>increment</p>
-        </div>
-        <div>
-          <p onClick={() => removeFromCart(item)}>remove</p>
+        <div className="flex items-center gap-4">
+          <p className="text-orange-700">{album.price} €</p>
+          <div className="text-center leading-3 flex justify-between items-center gap-2">
+            <p onClick={() => removeItem(item)} className="text-2xl">
+              <GrSubtractCircle size=".8em" />
+            </p>
+            <p className="font-semibold">{quantity}</p>
+            <p className="text-2xl" onClick={() => addItem(item)}>
+              <IoAddCircleOutline />
+            </p>
+          </div>
         </div>
       </div>
     );

@@ -121,7 +121,7 @@ const Navbar = () => {
               <BsCart4 className="hover:scale-110 mr-1 lg:hidden" size="2em" />
               <p className="hidden lg:block">
                 My Cart{" "}
-                <span className="text-lg text-zinc-500">({items} items)</span>{" "}
+                <span className="text-lg text-orange-500">({items} items)</span>{" "}
               </p>
             </Link>
           </li>

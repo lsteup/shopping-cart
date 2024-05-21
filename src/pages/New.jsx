@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AlbumsCat } from "../components/AlbumsCat";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
+import Title from "../components/Title";
 
 const New = () => {
   const [albums, setAlbums] = useState([]);
@@ -35,6 +36,10 @@ const New = () => {
   if (loading) return <div>Loading</div>;
   return (
     <div className="bg-amber-50 p-4">
+      <Title
+        title="New Releases"
+        text="Be the first to discover the latest hits and fresh sounds. Explore our ever-updating collection of new releases and find your next favorite record."
+      />
       <AlbumsCat albums={albums}></AlbumsCat>
     </div>
   );

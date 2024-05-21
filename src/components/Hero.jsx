@@ -4,7 +4,7 @@ import Button from "./Button";
 
 const Hero = () => {
   return (
-    <div className=" p-10 border-4 rounded-lg border-slate-900 flex gap-16 lg:p-20 justify-around flex-wrap md:flex-nowrap md:flex-row-reverse">
+    <div className=" mx-auto p-10 border-4 rounded-lg border-slate-900 flex gap-16 lg:p-20 justify-around flex-wrap md:flex-nowrap md:flex-row-reverse">
       <img
         className="border-2 max-h-84 shrink-0 md:max-h-80 border-slate-900 object-cover aspect-square lg:max-h-96  min-w-0 min-h-0"
         src={record}
