@@ -7,7 +7,7 @@ const LandingPage = () => {
   return (
     <div className="p-5 bg-orange-50 flex flex-wrap">
       <Hero />
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap gap-4 lg:flex-row">
         <CTA
           slogan="Stay Ahead of the Beat"
           search="New Releases"
