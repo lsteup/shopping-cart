@@ -62,7 +62,7 @@ const Artists = () => {
           <div className="p-4 text-lg text-zinc-700">No Artists found ...</div>
         )}
 
-        <div className="bg-orange-50 p-10 flex gap-10 flex-wrap justify-center">
+        <div className="bg-orange-50 p-10 flex gap-10 flex-wrap justify-center items-center">
           {artists.map((artist) => (
             <Artist key={artist.id} id={artist.id} />
           ))}

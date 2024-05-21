@@ -2,7 +2,7 @@ import { CiSearch } from "react-icons/ci";
 
 const SearchBar = ({ handleInput }) => {
   return (
-    <form class="max-w-3xl mx-auto mt-3">
+    <form class="max-w-3xl mx-auto mt-3 md:px-4">
       <label
         for="default-search"
         class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"

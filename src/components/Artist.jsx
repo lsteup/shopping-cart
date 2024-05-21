@@ -36,10 +36,12 @@ const Artist = ({ id }) => {
     return (
       <Link
         to={artist.id}
-        className="hover:shadlow-3xl hover:scale-110 hover:underline decoration-orange-500 max-w-48 rounded-md bg-zinc-50 shadow-lg"
+        className="hover:shadlow-3xl hover:scale-110 hover:text-orange-600 max-w-48 rounded-md bg-zinc-50 shadow-sm "
       >
-        <img className="" src={img} alt="" />
-        <div className=" border border-zinc-950 p-2 text-xl">{name}</div>
+        <img className="border border-zinc-950 " src={img} alt="" />
+        <div className=" border border-zinc-950 p-2 text-xl border-t-0">
+          {name}
+        </div>
       </Link>
     );
   }
