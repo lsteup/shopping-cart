@@ -7,7 +7,7 @@ const Album = ({ img, name, tracks, date, artist, id }) => {
       className=" hover:underline hover:scale-110 max-w-48 "
     >
       <img
-        className="border border-zinc-950 shadow-[rgba(0,0,0,0.22)_13px_8px_8px_-6px] -rotate-3 "
+        className="border border-zinc-950 shadow-[rgba(0,0,0,0.22)_13px_8px_8px_-6px] -rotate-3 min-w-0 min-h-0"
         src={img}
         alt=""
       />

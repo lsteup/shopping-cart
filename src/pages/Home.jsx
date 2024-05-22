@@ -20,7 +20,7 @@ const Home = () => {
 
   const addToCart = ({ id, quantity, price }) => {
     setCart([...cart, { id: id, quantity, price }]);
-    toast("item added to cart");
+    toast("Added To Your Cart");
     console.log(cart);
   };
 

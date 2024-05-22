@@ -5,6 +5,9 @@ import { ToastContainer } from "react-toastify";
 import Map from "../components/Map";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { GrSubtractCircle } from "react-icons/gr";
+import Loading from "../components/Loading";
+import Interesting from "../components/Interesting";
+import Deliveries from "../components/Deliveries";
 
 const SingleAlbum = () => {
   const [price, setPrice] = useState();
@@ -32,6 +35,7 @@ const SingleAlbum = () => {
     };
 
     try {
+      setIsLoading(true);
       const response = await axios(config);
       setAlbum(response.data);
       setIsLoading(false);
@@ -41,12 +45,10 @@ const SingleAlbum = () => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     fetchAlbum();
   }, []);
 
-  if (loading) return <div>loading</div>;
-  console.log(album);
+  if (loading) return <Loading />;
 
   if (!loading) {
     const name = album.name;
@@ -65,7 +67,7 @@ const SingleAlbum = () => {
       <div className="p-10 pt-4">
         <Map album={name} artist={artist} />
         <ToastContainer />
-        <article className="flex gap-10 flex-wrap justify-center content-center">
+        <article className="flex gap-10 flex-wrap justify-center content-center mb-8">
           <section className="max-w-[600px] min-w-[340px] grow p-3">
             <div className=" place-content-between">
               <p className="font-semibold text-2xl uppercase pb-4">
@@ -89,7 +91,9 @@ const SingleAlbum = () => {
                 </p>
                 {tracks.map((track) => {
                   const seconds = Math.floor(track.duration_ms / 1000);
-                  const time = `${Math.floor(seconds / 60)}:${seconds % 60}`;
+                  const remainder =
+                    seconds % 60 < 10 ? "0" + `${seconds % 60}` : seconds % 60;
+                  const time = `${Math.floor(seconds / 60)}:${remainder}`;
                   return (
                     <div className="flex gap-6" key={track.track_number}>
                       <p className="font-semibold">{track.track_number}</p>
@@ -138,7 +142,7 @@ const SingleAlbum = () => {
               />
             </div>
             <p
-              className="bg-zinc-950 text-orange-400 uppercase font-semibold p-4 text-center border-2 border-orange-500"
+              className="bg-zinc-950 text-orange-500 uppercase font-semibold p-4 text-center border-2 border-orange-500"
               onClick={() =>
                 addToCart({
                   quantity,
@@ -151,6 +155,11 @@ const SingleAlbum = () => {
             </p>
           </div>
         </article>
+        <Interesting />
+        <div className="mx-auto max-w-80 text-center border-2 uppercase font-semibold border-zinc-950 my-8 p-2 hover:bg-orange-400">
+          <a href="/albums"> ← Back to Vinyls and Records</a>
+        </div>
+        <Deliveries />
       </div>
     );
   }

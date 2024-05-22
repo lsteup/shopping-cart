@@ -57,7 +57,7 @@ const CartItem = ({ item }) => {
         </div>
         <div className="flex items-center gap-4">
           <p className="text-orange-700 font-semibold md:text-lg">
-            {album.price}.00 €
+            €{album.price},00
           </p>
           <div className="text-center leading-3 flex justify-between items-center gap-2">
             <p onClick={() => removeItem(item)} className="text-2xl">

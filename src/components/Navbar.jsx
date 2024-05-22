@@ -6,6 +6,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import { BsCart4 } from "react-icons/bs";
 import { useAppContext } from "../pages/Home";
 import { useLocation } from "react-router-dom";
+import Banner from "./Banner";
 
 const Navbar = () => {
   const location = useLocation().pathname;
@@ -42,14 +43,7 @@ const Navbar = () => {
                   size="2em"
                 />
               </li>
-              <li>
-                <Link
-                  className="hover:bg-orange-400 block p-2 bg-orange-100"
-                  to="artists"
-                >
-                  Artists
-                </Link>
-              </li>
+
               <li>
                 <Link
                   className="hover:bg-orange-400 block p-2 bg-orange-100"
@@ -69,6 +63,14 @@ const Navbar = () => {
               <li>
                 <Link
                   className="hover:bg-orange-400 block p-2 bg-orange-100"
+                  to="artists"
+                >
+                  Used Vinyl
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="hover:bg-orange-400 block p-2 bg-orange-100"
                   to="cart"
                 >
                   My Cart
@@ -79,8 +81,9 @@ const Navbar = () => {
         )}
       </nav>
 
-      <nav className="hidden md:block bg-gradient-to-r from-sky-100 to-orange-100 sticky top-0 z-50 p-4 lg:p-6 border-b-2 border-zinc-900 uppercase">
-        <ul className="flex font-semibold items-center gap-6 lg:gap-8 text-lg lg:text-xl">
+      <nav className="hidden md:block bg-gradient-to-r from-sky-50 to-orange-50 sticky top-0 z-50 border-b border-zinc-900 uppercase">
+        <Banner />
+        <ul className="flex font-semibold items-center gap-6 lg:gap-8 text-lg lg:text-xl p-4">
           <li className="grow ">
             <Link className="grow block " to="/">
               <IoHomeOutline className="hover:scale-110 lg:hidden" size="3em" />
@@ -92,16 +95,7 @@ const Navbar = () => {
               </p>
             </Link>
           </li>
-          <li>
-            <Link
-              className={`${
-                location.startsWith("/artists") && "underline"
-              } hover:underline decoration-2 underline-offset-4 decoration-orange-500  `}
-              to="artists"
-            >
-              Artists
-            </Link>
-          </li>
+
           <li>
             <Link
               className={`${
@@ -109,7 +103,7 @@ const Navbar = () => {
               } hover:underline decoration-2 underline-offset-4 decoration-orange-500  `}
               to="albums"
             >
-              Albums
+              Vinyls and Records
             </Link>
           </li>
           <li>
@@ -120,6 +114,16 @@ const Navbar = () => {
               to="new"
             >
               New
+            </Link>
+          </li>
+          <li>
+            <Link
+              className={`${
+                location.startsWith("/artists") && "underline"
+              } hover:underline decoration-2 underline-offset-4 decoration-orange-500  `}
+              to="artists"
+            >
+              Used Vinyl
             </Link>
           </li>
           <li>

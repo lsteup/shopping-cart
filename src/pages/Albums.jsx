@@ -5,6 +5,7 @@ import SearchBar from "../components/SearchBar";
 import Title from "../components/Title";
 import Products from "../components/Products";
 import Deliveries from "../components/Deliveries";
+import Loading from "../components/Loading";
 
 const Albums = () => {
   const [albums, setAlbums] = useState([]);
@@ -22,6 +23,7 @@ const Albums = () => {
     };
 
     try {
+      setIsLoading(true);
       const response = await axios(config);
       const newAlbums = response.data.albums.items.sort((a, b) =>
         a.name.localeCompare(b.name)
@@ -45,7 +47,7 @@ const Albums = () => {
     setAlbums(newAlbums);
   };
 
-  if (loading) return <div>Loading</div>;
+  if (loading) return <Loading />;
   return (
     <div className="">
       <Title
