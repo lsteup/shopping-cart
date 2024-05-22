@@ -5,8 +5,11 @@ import { IoMdClose } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
 import { BsCart4 } from "react-icons/bs";
 import { useAppContext } from "../pages/Home";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation().pathname;
+
   const [navbar, setNavbar] = useState(false);
   const { cart } = useAppContext();
   const items = cart.reduce(
@@ -91,7 +94,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              className="hover:underline decoration-2 underline-offset-4 decoration-orange-500  "
+              className={`${
+                location.startsWith("/artists") && "underline"
+              } hover:underline decoration-2 underline-offset-4 decoration-orange-500  `}
               to="artists"
             >
               Artists
@@ -99,7 +104,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              className="hover:underline decoration-2 underline-offset-4 decoration-orange-500  "
+              className={`${
+                location.startsWith("/albums") && "underline"
+              } hover:underline decoration-2 underline-offset-4 decoration-orange-500  `}
               to="albums"
             >
               Albums
@@ -107,7 +114,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              className="hover:underline decoration-2 underline-offset-4 decoration-orange-500  "
+              className={`${
+                location.startsWith("/new") && "underline"
+              } hover:underline decoration-2 underline-offset-4 decoration-orange-500  `}
               to="new"
             >
               New
@@ -115,7 +124,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              className="hover:underline decoration-2 underline-offset-4 decoration-orange-500  "
+              className={` ${
+                location.startsWith("/cart") && "underline"
+              } hover:underline decoration-2 underline-offset-4 decoration-orange-500  `}
               to="cart"
             >
               <BsCart4 className="hover:scale-110 mr-1 lg:hidden" size="2em" />
