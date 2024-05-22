@@ -3,11 +3,13 @@ import { AlbumsCat } from "../components/AlbumsCat";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
 import Title from "../components/Title";
+import Products from "../components/Products";
 
 const Albums = () => {
   const [albums, setAlbums] = useState([]);
   const [allAlbums, setAllAlbums] = useState([]);
   const [loading, setIsLoading] = useState(true);
+  const total = albums.length;
   const apiKey = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN;
   const fetchAlbums = async () => {
     const config = {
@@ -44,13 +46,13 @@ const Albums = () => {
 
   if (loading) return <div>Loading</div>;
   return (
-    <div className="bg-orange-50 p-4">
+    <div className="">
       <Title
         title="Albums"
         text="Journey through our extensive catalog of albums, where every record tells a story. From iconic classics to contemporary must-haves, there's an album waiting for you."
       />
       <SearchBar handleInput={handleInput} />
-
+      <Products num={total} />
       <AlbumsCat albums={albums}></AlbumsCat>
     </div>
   );

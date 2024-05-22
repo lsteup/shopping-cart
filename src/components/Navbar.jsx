@@ -31,7 +31,7 @@ const Navbar = () => {
 
         {navbar && (
           <div>
-            <ul className="flex flex-col divide-y-2 divide-zinc-800 font-semibold">
+            <ul className="flex flex-col divide-y-2 divide-zinc-800 font-semibold uppercase">
               <li className="flex items-center bg-orange-100 hover:bg-orange-400 ">
                 <Link className="grow block p-2 " to="/">
                   Home
@@ -79,7 +79,7 @@ const Navbar = () => {
         )}
       </nav>
 
-      <nav className="hidden md:block bg-orange-100 p-4 lg:p-6 border-b-2 border-zinc-900">
+      <nav className="hidden md:block bg-gradient-to-r from-sky-100 to-orange-100 sticky top-0 z-50 p-4 lg:p-6 border-b-2 border-zinc-900 uppercase">
         <ul className="flex font-semibold items-center gap-6 lg:gap-8 text-lg lg:text-xl">
           <li className="grow ">
             <Link className="grow block " to="/">

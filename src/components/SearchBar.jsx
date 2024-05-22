@@ -16,8 +16,8 @@ const SearchBar = ({ handleInput }) => {
         <input
           type="search"
           id="default-search"
-          class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500"
-          placeholder="Search Artists, Albums ..."
+          class="block w-full p-4 ps-10 text-sm text-gray-900 border-4 rounded-sm border-zinc-950 bg-gray-50"
+          placeholder="Search ..."
           onChange={(e) => handleInput(e.target.value)}
         />
         <button
@@ -26,7 +26,7 @@ const SearchBar = ({ handleInput }) => {
             e.preventDefault();
             handleInput;
           }}
-          class="text-zinc-50 absolute end-2.5 bottom-2.5 bg-orange-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+          class="text-zinc-50 uppercase absolute end-2.5 border-2 border-zinc-950 bottom-2.5 bg-orange-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-sm text-sm px-4 py-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
         >
           Search
         </button>
