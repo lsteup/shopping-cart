@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAppContext } from "./Home";
 import { ToastContainer } from "react-toastify";
+import Map from "../components/Map";
 
 const SingleAlbum = () => {
   let price = (Math.random() * 26 + 25).toFixed(0);
@@ -50,49 +51,52 @@ const SingleAlbum = () => {
     };
 
     return (
-      <article className="p-10 flex gap-10 flex-wrap justify-center content-center">
+      <div className="p-10 pt-4">
+        <Map album={name} artist={artist} />
         <ToastContainer />
-        <img className="border-2 border-gray-900 max-h-80" src={img} alt="" />
-        <section className="border-2 border-gray-900 max-w-[600px] min-w-[340px] grow p-3">
-          <div className="flex place-content-between">
-            <div>
-              <p className="font-semibold text-xl ">{name}</p>
-              <p className="text-lg text-gray-500">{artist}</p>
+        <article className="flex gap-10 flex-wrap justify-center content-center">
+          <img className="border-2 border-gray-900 max-h-80" src={img} alt="" />
+          <section className="border-2 border-gray-900 max-w-[600px] min-w-[340px] grow p-3">
+            <div className="flex place-content-between">
+              <div>
+                <p className="font-semibold text-xl ">{name}</p>
+                <p className="text-lg text-gray-500">{artist}</p>
+              </div>
+              <p>{price}</p>
             </div>
-            <p>{price}</p>
-          </div>
-          <div className="mt-3">
-            <div className="divide-y">
-              <div></div>
-              {tracks.map((track) => {
-                return (
-                  <div className="flex gap-5" key={track.track_number}>
-                    <p className="text-gray-500">{track.track_number}</p>
-                    <div>{track.name}</div>
-                  </div>
-                );
-              })}
-              <div></div>
+            <div className="mt-3">
+              <div className="divide-y">
+                <div></div>
+                {tracks.map((track) => {
+                  return (
+                    <div className="flex gap-5" key={track.track_number}>
+                      <p className="text-gray-500">{track.track_number}</p>
+                      <div>{track.name}</div>
+                    </div>
+                  );
+                })}
+                <div></div>
+              </div>
             </div>
-          </div>
-          <div className="flex place-content-between mt-3">
-            {quantity > 1 && <p onClick={() => decrement()}>decrement</p>}
-            <p>{quantity}</p>
-            <p onClick={() => setQuantity(quantity + 1)}>increment</p>
-            <p
-              onClick={() =>
-                addToCart({
-                  quantity,
-                  id: album.id,
-                  price: price,
-                })
-              }
-            >
-              add to cart
-            </p>
-          </div>
-        </section>
-      </article>
+            <div className="flex place-content-between mt-3">
+              {quantity > 1 && <p onClick={() => decrement()}>decrement</p>}
+              <p>{quantity}</p>
+              <p onClick={() => setQuantity(quantity + 1)}>increment</p>
+              <p
+                onClick={() =>
+                  addToCart({
+                    quantity,
+                    id: album.id,
+                    price: price,
+                  })
+                }
+              >
+                add to cart
+              </p>
+            </div>
+          </section>
+        </article>
+      </div>
     );
   }
 };
