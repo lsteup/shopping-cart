@@ -2,7 +2,6 @@ import { useContext, useEffect } from "react";
 import { useAppContext } from "./Home";
 import CartItem from "../components/CartItem";
 import { ToastContainer, toast } from "react-toastify";
-import cartImg from "/Users/louisasteup/Desktop/shopping-cart/src/images/cart.jpg";
 import Title from "../components/Title";
 import Deliveries from "../components/Deliveries";
 
