@@ -49,21 +49,23 @@ const CartItem = ({ item }) => {
     const name = album.name;
     const artist = album.artists[0].name;
     return (
-      <div className="flex gap-4 justify-start my-4 items-center text-xs">
+      <div className="flex gap-4 justify-start my-4 items-center text-xs md:text-base">
         <img className="border border-zinc-950" src={img} alt="" />
         <div className="grow">
-          <p className="text-semibold">{name}</p>
-          <p className="text-zinc-500">{artist}</p>
+          <p className="text-semibold md:text-lg">{name}</p>
+          <p className="text-zinc-500 md:text-base">{artist}</p>
         </div>
         <div className="flex items-center gap-4">
-          <p className="text-orange-700">{album.price} €</p>
+          <p className="text-orange-700 font-semibold md:text-lg">
+            {album.price} €
+          </p>
           <div className="text-center leading-3 flex justify-between items-center gap-2">
             <p onClick={() => removeItem(item)} className="text-2xl">
-              <GrSubtractCircle size=".8em" />
+              <GrSubtractCircle size="1em" />
             </p>
             <p className="font-semibold">{quantity}</p>
             <p className="text-2xl" onClick={() => addItem(item)}>
-              <IoAddCircleOutline />
+              <IoAddCircleOutline size="1.2em" />
             </p>
           </div>
         </div>
