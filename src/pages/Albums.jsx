@@ -4,6 +4,7 @@ import axios from "axios";
 import SearchBar from "../components/SearchBar";
 import Title from "../components/Title";
 import Products from "../components/Products";
+import Deliveries from "../components/Deliveries";
 
 const Albums = () => {
   const [albums, setAlbums] = useState([]);
@@ -54,6 +55,7 @@ const Albums = () => {
       <SearchBar handleInput={handleInput} />
       <Products num={total} />
       <AlbumsCat albums={albums}></AlbumsCat>
+      <Deliveries />
     </div>
   );
 };
