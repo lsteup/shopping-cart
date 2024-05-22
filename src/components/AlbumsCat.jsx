@@ -2,7 +2,7 @@ import Album from "./Album";
 
 export const AlbumsCat = ({ albums }) => {
   return (
-    <section className="mt-5 p-10 grid grid-cols-[repeat(4,minmax(100px,500px))] gap-20  justify-center">
+    <section className="mt-5 p-10 px-24 grid grid-cols-[repeat(4,minmax(100px,500px))] gap-20  justify-center">
       {albums.map((album) => {
         const artist = album.artists[0].name;
         const name = album.name;

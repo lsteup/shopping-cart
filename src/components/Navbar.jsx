@@ -60,14 +60,7 @@ const Navbar = () => {
                   New Releases
                 </Link>
               </li>
-              <li>
-                <Link
-                  className="hover:bg-orange-400 block p-2 bg-orange-100"
-                  to="artists"
-                >
-                  Used Vinyl
-                </Link>
-              </li>
+
               <li>
                 <Link
                   className="hover:bg-orange-400 block p-2 bg-orange-100"
@@ -116,16 +109,7 @@ const Navbar = () => {
               New
             </Link>
           </li>
-          <li>
-            <Link
-              className={`${
-                location.startsWith("/artists") && "underline"
-              } hover:underline decoration-2 underline-offset-4 decoration-orange-500  `}
-              to="artists"
-            >
-              Used Vinyl
-            </Link>
-          </li>
+
           <li>
             <Link
               className={` ${

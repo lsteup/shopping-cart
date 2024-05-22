@@ -45,30 +45,41 @@ const CartItem = ({ item }) => {
 
   if (loading) return <div>loading</div>;
   if (!loading) {
-    const img = album.images[2].url;
+    const img = album.images[1].url;
     const name = album.name;
     const artist = album.artists[0].name;
     return (
-      <div className="flex gap-4 justify-start my-4 items-center text-xs md:text-base">
-        <img className="border border-zinc-950" src={img} alt="" />
-        <div className="grow">
-          <p className="text-semibold md:text-lg">{name}</p>
-          <p className="text-zinc-500 md:text-base">{artist}</p>
-        </div>
-        <div className="flex items-center gap-4">
-          <p className="text-orange-700 font-semibold md:text-lg">
-            €{album.price},00
-          </p>
-          <div className="text-center leading-3 flex justify-between items-center gap-2">
-            <p onClick={() => removeItem(item)} className="text-2xl">
-              <GrSubtractCircle size="1em" />
+      <div className="grid grid-cols-6  my-4 place-content-start font-light text-xs md:text-base ">
+        <div className="col-span-3 flex gap-6 ">
+          <img
+            className="border border-zinc-950 aspect-square shrink-0 max-w-32"
+            src={img}
+            alt=""
+          />
+          <div className="">
+            <p className="font-semibold md:text-lg">
+              {artist} - {name}
             </p>
-            <p className="font-semibold">{quantity}</p>
-            <p className="text-2xl" onClick={() => addItem(item)}>
-              <IoAddCircleOutline size="1.2em" />
+
+            <p
+              onClick={() => removeFromCart(item)}
+              className="font-light underline font-sm"
+            >
+              remove
             </p>
           </div>
         </div>
+        <p className=" md:text-lg">€{album.price},00</p>
+        <div className="justify-start leading-3 flex h-7  items-center gap-2">
+          <p onClick={() => removeItem(item)} className="text-2xl">
+            <GrSubtractCircle size="1em" />
+          </p>
+          <p className=" md:text-lg">{quantity}</p>
+          <p className="text-2xl" onClick={() => addItem(item)}>
+            <IoAddCircleOutline size="1.2em" />
+          </p>
+        </div>
+        <p className="md:text-lg">€{quantity * album.price},00</p>
       </div>
     );
   }
