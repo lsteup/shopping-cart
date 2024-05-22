@@ -69,7 +69,6 @@ const Cart = () => {
             Go To Checkout
           </button>
         </div>
-        <img className="hidden lg:block max-w-xl" src={cartImg} alt="" />
       </div>
       <Deliveries />
     </div>

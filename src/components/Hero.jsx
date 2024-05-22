@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import record from "/Users/louisasteup/Desktop/shopping-cart/src/images/victrola-record-players-R4Rdi0EfBws-unsplash.jpg";
+import record from "/recordplayer.jpg";
 import Button from "./Button";
 
 const Hero = () => {

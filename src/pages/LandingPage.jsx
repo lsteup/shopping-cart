@@ -1,7 +1,7 @@
 import CTA from "../components/CTA";
 import Hero from "../components/Hero";
-import record from "/Users/louisasteup/Desktop/shopping-cart/src/images/record.jpg";
-import singer from "/Users/louisasteup/Desktop/shopping-cart/src/images/singer.jpg";
+import record from "/record.jpg";
+import singer from "/singer.jpg";
 
 const LandingPage = () => {
   return (
