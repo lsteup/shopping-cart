@@ -16,7 +16,7 @@ const Navbar = () => {
     (accumulator, item) => accumulator + item.quantity,
     0
   );
-  console.log(items);
+
   return (
     <>
       <nav className="md:hidden border-b-2 border-zinc-800">

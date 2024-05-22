@@ -78,7 +78,7 @@ const Home = () => {
         addItem,
       }}
     >
-      <div className="bg-gradient-to-r from-sky-50 to-orange-50 flex flex-col justify-between">
+      <div className="min-h-screen bg-gradient-to-r from-sky-50 to-orange-50 flex flex-col justify-between">
         <Navbar />
         <Outlet />
         <Footer></Footer>
