@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "../components/Footer";
 
 import { createContext } from "react";
 
@@ -77,9 +78,10 @@ const Home = () => {
         addItem,
       }}
     >
-      <div className="bg-orange-50 h-screen">
+      <div className="bg-orange-50 h-screen flex flex-col justify-between">
         <Navbar />
         <Outlet />
+        <Footer></Footer>
       </div>
     </AppContext.Provider>
   );
