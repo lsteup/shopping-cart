@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
-import { IoHomeOutline } from "react-icons/io5";
 import { BsCart4 } from "react-icons/bs";
 import { useAppContext } from "../pages/Home";
 import { useLocation } from "react-router-dom";
@@ -72,14 +71,8 @@ const Navbar = () => {
         <Banner />
         <ul className="flex font-semibold items-center gap-6 lg:gap-8 text-lg lg:text-xl p-4">
           <li className="grow ">
-            <Link className="grow block " to="/">
-              <IoHomeOutline className="hover:scale-110 lg:hidden" size="3em" />
-              <p className="hidden lg:block text-2xl tracking-tighter uppercase ">
-                Vinyl
-                <span className="text-orange-600 text-bold tracking-wider">
-                  Haven
-                </span>
-              </p>
+            <Link className="grow  items-center" to="/">
+              <img className="h-20" src={logo} alt="" />
             </Link>
           </li>
 

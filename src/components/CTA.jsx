@@ -49,7 +49,7 @@ const CTA = () => {
       {<AlbumsCat albums={albums}></AlbumsCat>}
 
       <Link className="" to="/new">
-        <p className="my-6 capitalize mx-auto border-4 border-orange-500 px-4 py-2 text-center">
+        <p className="my-6 capitalize mx-auto border-4 border-orange-500 px-4 py-2 text-center max-w-80">
           see all new releases
         </p>
       </Link>

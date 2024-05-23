@@ -21,30 +21,54 @@ const LandingPage = () => {
         autoPlay={true}
         infiniteLoop={true}
         showThumbs={false}
-        showArrows={false}
         showStatus={false}
         dynamicHeight={false}
       >
         <div>
-          <img className="max-h-44 object-cover" src={photo1} alt="" />
+          <img
+            className="max-h-44 sm:max-h-64 object-cover md:max-h-72"
+            src={photo1}
+            alt=""
+          />
         </div>
         <div>
-          <img className="max-h-44 object-cover" src={photo2} alt="" />
+          <img
+            className="max-h-44 sm:max-h-64 object-cover md:max-h-72"
+            src={photo2}
+            alt=""
+          />
         </div>
         <div>
-          <img className="max-h-44 object-cover" src={photo3} alt="" />
+          <img
+            className="max-h-44 sm:max-h-64 object-cover md:max-h-72"
+            src={photo3}
+            alt=""
+          />
         </div>
         <div>
-          <img className="max-h-44 object-cover" src={photo5} alt="" />
+          <img
+            className="max-h-44 sm:max-h-64 object-cover md:max-h-72"
+            src={photo5}
+            alt=""
+          />
         </div>
         <div>
-          <img className="max-h-44 object-cover" src={photo6} alt="" />
+          <img
+            className="max-h-44 sm:max-h-64 object-cover md:max-h-72"
+            src={photo6}
+            alt=""
+          />
         </div>
       </Carousel>
       <div className="p-5 flex flex-wrap">
         <Hero />
-        <Feature title="Recommended" albumId="5eIZT2VKUxB8REoU0V1Qs2" />
-        <Feature title="Record of the Week" albumId="6GosI4zndYwzR1ht3SOi8H" />
+        <div className="md:flex gap-4 justify-between w-4/5 mx-auto ">
+          <Feature title="Recommended" albumId="5eIZT2VKUxB8REoU0V1Qs2" />
+          <Feature
+            title="Record of the Week"
+            albumId="6GosI4zndYwzR1ht3SOi8H"
+          />
+        </div>
 
         <div className="flex flex-wrap lg:flex-nowrap gap-4 ">
           <CTA
