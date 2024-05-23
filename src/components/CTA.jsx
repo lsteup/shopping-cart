@@ -4,7 +4,7 @@ import axios from "axios";
 import { useAppContext } from "../pages/Home";
 import { AlbumsCat } from "../components/AlbumsCat";
 import Loading from "./Loading";
-import { sale } from "../../data";
+import { sale, vintage } from "../../data";
 
 const CTA = ({ title, id, link }) => {
   const [albums, setAlbums] = useState();
@@ -13,13 +13,16 @@ const CTA = ({ title, id, link }) => {
   const token = context.token;
 
   const saleSample = sale.split(",").slice(0, 5).join(",");
-  console.log(saleSample);
+  const vintageSample = vintage.split(",").slice(0, 5).join(",");
 
   let url, text;
 
   if (id === "sale") {
     url = `https://api.spotify.com/v1/albums?${saleSample}`;
     text = "See all Sale Items";
+  } else if (id === "vintage") {
+    url = `https://api.spotify.com/v1/albums?${vintageSample}`;
+    text = "See all Vintage Records";
   } else {
     url = "https://api.spotify.com/v1/browse/new-releases?limit=5";
     text = "See all New Releases";

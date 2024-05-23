@@ -61,6 +61,11 @@ const Navbar = () => {
                   Sale
                 </Link>
               </li>
+              <li>
+                <Link className=" hover:bg-orange-400 block p-2 " to="vintage">
+                  Vintage
+                </Link>
+              </li>
 
               <li>
                 <Link className="hover:bg-orange-400 block p-2 " to="cart">
@@ -109,6 +114,16 @@ const Navbar = () => {
               to="sale"
             >
               Sale
+            </Link>
+          </li>
+          <li>
+            <Link
+              className={`${
+                location.startsWith("/vintage") && "underline"
+              } hover:underline decoration-2 underline-offset-4 decoration-orange-500  `}
+              to="vintage"
+            >
+              Vintage
             </Link>
           </li>
 

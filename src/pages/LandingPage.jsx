@@ -82,6 +82,9 @@ const LandingPage = () => {
         <div className="flex flex-wrap lg:flex-nowrap gap-4 ">
           <CTA link="/sale" image={record} id="sale" title="Sale" />
         </div>
+        <div className="flex flex-wrap lg:flex-nowrap gap-4 ">
+          <CTA link="/vintage" id="vintage" title="Vintage" />
+        </div>
         <Deliveries />
       </div>
     </>

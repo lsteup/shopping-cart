@@ -12,6 +12,7 @@ import SingleAlbum from "./pages/SingleAlbum.jsx";
 import SingleArtist from "./pages/SingleArtist.jsx";
 import New from "./pages/New.jsx";
 import Sale from "./pages/Sale.jsx";
+import Vintage from "./pages/Vintage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: "sale", element: <Sale /> },
       { path: "cart", element: <Cart /> },
       { path: "new", element: <New /> },
+      { path: "vintage", element: <Vintage /> },
       { path: "albums/:albumId", element: <SingleAlbum /> },
     ],
   },
