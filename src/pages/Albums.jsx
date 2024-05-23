@@ -14,13 +14,13 @@ const Albums = () => {
   const [loading, setIsLoading] = useState(true);
   const total = albums.length;
   const { token } = useAppContext();
-  const apiKey = token;
+
   const fetchAlbums = async () => {
     const config = {
       method: "get",
-      url: "https://api.spotify.com/v1/browse/new-releases?limit=30",
+      url: "https://api.spotify.com/v1/browse/new-releases?limit=50",
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${token}`,
       },
     };
 

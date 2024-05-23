@@ -25,49 +25,41 @@ const Navbar = () => {
         {!navbar && (
           <div
             onClick={() => setNavbar(true)}
-            className="flex items-center justify-between p-2 bg-orange-100 "
+            className="flex items-center justify-between p-2  "
           >
-            <img className="h-20" src={logo} alt="" />
+            <Link to="/">
+              <img className="h-20" src={logo} alt="" />
+            </Link>
             <FaBars className="hover:scale-110" size="1.7em" />
           </div>
         )}
 
         {navbar && (
           <div>
+            <div>
+              <Link to="/">
+                <img className="h-20 mx-auto py-2" src={logo} alt="" />
+              </Link>
+              <IoMdClose
+                className="hover:scale-125 absolute top-0 right-0"
+                onClick={() => setNavbar(false)}
+                size="2em"
+              />
+            </div>
             <ul className="flex flex-col divide-y-2 divide-zinc-800 font-semibold uppercase">
-              <li className="flex items-center bg-orange-100 hover:bg-orange-400 ">
-                <Link className="grow block p-2 " to="/">
-                  Home
-                </Link>
-                <IoMdClose
-                  className="hover:scale-125"
-                  onClick={() => setNavbar(false)}
-                  size="2em"
-                />
-              </li>
-
               <li>
-                <Link
-                  className="hover:bg-orange-400 block p-2 bg-orange-100"
-                  to="albums"
-                >
+                <Link className="hover:bg-orange-400 block p-2" to="albums">
                   Albums
                 </Link>
               </li>
               <li>
-                <Link
-                  className=" hover:bg-orange-400 block p-2 bg-orange-100"
-                  to="new"
-                >
+                <Link className=" hover:bg-orange-400 block p-2 " to="new">
                   New Releases
                 </Link>
               </li>
 
               <li>
-                <Link
-                  className="hover:bg-orange-400 block p-2 bg-orange-100"
-                  to="cart"
-                >
+                <Link className="hover:bg-orange-400 block p-2 " to="cart">
                   My Cart
                 </Link>
               </li>

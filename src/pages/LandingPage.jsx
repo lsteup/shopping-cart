@@ -23,22 +23,22 @@ const LandingPage = () => {
         showThumbs={false}
         showArrows={false}
         showStatus={false}
-        dynamicHeight={true}
+        dynamicHeight={false}
       >
         <div>
-          <img src={photo1} alt="" />
+          <img className="max-h-44 object-cover" src={photo1} alt="" />
         </div>
         <div>
-          <img src={photo2} alt="" />
+          <img className="max-h-44 object-cover" src={photo2} alt="" />
         </div>
         <div>
-          <img src={photo3} alt="" />
+          <img className="max-h-44 object-cover" src={photo3} alt="" />
         </div>
         <div>
-          <img src={photo5} alt="" />
+          <img className="max-h-44 object-cover" src={photo5} alt="" />
         </div>
         <div>
-          <img src={photo6} alt="" />
+          <img className="max-h-44 object-cover" src={photo6} alt="" />
         </div>
       </Carousel>
       <div className="p-5 flex flex-wrap">

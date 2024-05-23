@@ -7,19 +7,20 @@ import { Link } from "react-router-dom";
 const Feature = ({ title, albumId }) => {
   const [loading, setIsLoading] = useState(true);
   const [album, setAlbum] = useState();
-  const { token } = useAppContext();
-  const apiKey = token;
+  const context = useAppContext();
+  const token = context.token;
 
   const fetchAlbum = async () => {
     const config = {
       method: "get",
       url: `https://api.spotify.com/v1/albums/${albumId}`,
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${token}`,
       },
     };
 
     try {
+      console.log(context);
       setIsLoading(true);
       const response = await axios(config);
       setAlbum(response.data);
@@ -35,12 +36,12 @@ const Feature = ({ title, albumId }) => {
 
   if (loading) return <Loading />;
   return (
-    <div className="mt-3 ">
+    <div className="mt-3 w-4/5 mx-auto">
       <p className="border-4 border-orange-500 px-4 py-2 w-max">{title}</p>
       <div className="pt-6 pb-12">
-        <Link to={`/albums/${albumId}`}>
+        <Link className="" to={`/albums/${albumId}`}>
           <img
-            className="border border-black w-3/4"
+            className="border border-black max-w-72"
             src={album.images[0].url}
             alt=""
           />

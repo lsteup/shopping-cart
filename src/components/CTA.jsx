@@ -1,27 +1,58 @@
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import { useAppContext } from "../pages/Home";
+import { AlbumsCat } from "../components/AlbumsCat";
+import Loading from "./Loading";
 
-const CTA = ({ slogan, search, link, image }) => {
+const CTA = () => {
+  const [albums, setAlbums] = useState();
+  const [loading, setIsLoading] = useState(true);
+  const context = useAppContext();
+  const token = context.token;
+
+  const fetchAlbums = async () => {
+    const config = {
+      method: "get",
+      url: "https://api.spotify.com/v1/browse/new-releases?limit=5",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    try {
+      console.log(context);
+      setIsLoading(true);
+      const response = await axios(config);
+      const newAlbums = response.data.albums.items.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+      setAlbums(newAlbums);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error making request:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      fetchAlbums();
+      console.log(albums);
+    }
+  }, [token]);
+
+  if (loading) return <Loading />;
+
   return (
-    <div className="flex  justify-between border-4 font-semibold  border-zinc-950 mt-4 p-10 items-center gap-6 grow text-center ">
-      <div className="flex flex-col justify-between  font-semibold  items-center gap-6 grow text-center">
-        <div>
-          <p className="text-4xl">{slogan}</p>
-        </div>
+    <div className="mx-auto w-4/5">
+      <p className="border-4 border-orange-500 px-4 py-2 w-max">New Releases</p>
+      {<AlbumsCat albums={albums}></AlbumsCat>}
 
-        <Button
-          className="bg-orange-400 p-3 border-2 border-zinc-950 rounded-lg font-semibold hover:bg-orange-500 "
-          to={link}
-          text="Explore New Albums"
-        >
-          Explore {search}
-        </Button>
-      </div>
-      <img
-        className="hidden md:block lg:hidden xl:block max-w-72 border-2 border-zinc-950"
-        src={image}
-        alt=""
-      />
+      <Link className="" to="/new">
+        <p className="my-6 capitalize mx-auto border-4 border-orange-500 px-4 py-2 text-center">
+          see all new releases
+        </p>
+      </Link>
     </div>
   );
 };
