@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "../components/Footer";
 
 import { createContext } from "react";
+import CompanyFooter from "../components/CompanyFooter";
 
 export const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
@@ -19,7 +20,7 @@ const Home = () => {
   const tokenGetter = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5050/get_access_token",
+        "https://spotify-server-git-main-lulus-projects-e373920f.vercel.app/get_access_token",
         {
           auth: {
             username: import.meta.env.VITE_ADMIN_USER,
@@ -107,7 +108,7 @@ const Home = () => {
       <div className="min-h-screen bg-gradient-to-r from-sky-50 to-orange-50 flex flex-col justify-between">
         <Navbar />
         <Outlet />
-        <Footer></Footer>
+        <CompanyFooter />
       </div>
     </AppContext.Provider>
   );

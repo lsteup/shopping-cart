@@ -7,6 +7,7 @@ import { BsCart4 } from "react-icons/bs";
 import { useAppContext } from "../pages/Home";
 import { useLocation } from "react-router-dom";
 import Banner from "./Banner";
+import logo from "/logo.png";
 
 const Navbar = () => {
   const location = useLocation().pathname;
@@ -24,9 +25,10 @@ const Navbar = () => {
         {!navbar && (
           <div
             onClick={() => setNavbar(true)}
-            className="block p-2 bg-orange-100 "
+            className="flex items-center justify-between p-2 bg-orange-100 "
           >
-            <FaBars className="hover:scale-110" size="2em" />
+            <img className="h-20" src={logo} alt="" />
+            <FaBars className="hover:scale-110" size="1.7em" />
           </div>
         )}
 

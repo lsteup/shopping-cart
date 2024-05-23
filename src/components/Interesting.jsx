@@ -2,13 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
 import Album from "./Album";
+import { useAppContext } from "../pages/Home";
 
 const Interesting = () => {
   const [albums, setAlbums] = useState();
   const [loading, setIsLoading] = useState(true);
+  const { token } = useAppContext();
 
   const fetchAlbums = async () => {
-    const apiKey = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN;
+    const apiKey = token;
     const config = {
       method: "get",
       url: "https://api.spotify.com/v1/browse/new-releases?limit=4",
