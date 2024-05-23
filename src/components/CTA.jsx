@@ -4,17 +4,31 @@ import axios from "axios";
 import { useAppContext } from "../pages/Home";
 import { AlbumsCat } from "../components/AlbumsCat";
 import Loading from "./Loading";
+import { sale } from "../../data";
 
-const CTA = () => {
+const CTA = ({ title, id, link }) => {
   const [albums, setAlbums] = useState();
   const [loading, setIsLoading] = useState(true);
   const context = useAppContext();
   const token = context.token;
 
+  const saleSample = sale.split(",").slice(0, 5).join(",");
+  console.log(saleSample);
+
+  let url, text;
+
+  if (id === "sale") {
+    url = `https://api.spotify.com/v1/albums?${saleSample}`;
+    text = "See all Sale Items";
+  } else {
+    url = "https://api.spotify.com/v1/browse/new-releases?limit=5";
+    text = "See all New Releases";
+  }
+
   const fetchAlbums = async () => {
     const config = {
       method: "get",
-      url: "https://api.spotify.com/v1/browse/new-releases?limit=5",
+      url: url,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -24,9 +38,7 @@ const CTA = () => {
       console.log(context);
       setIsLoading(true);
       const response = await axios(config);
-      const newAlbums = response.data.albums.items.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      );
+      const newAlbums = response.data.albums.items || response.data.albums;
       setAlbums(newAlbums);
       setIsLoading(false);
     } catch (error) {
@@ -45,12 +57,12 @@ const CTA = () => {
 
   return (
     <div className="mx-auto w-4/5">
-      <p className="border-4 border-orange-500 px-4 py-2 w-max">New Releases</p>
+      <p className="border-4 border-orange-500 px-4 py-2 w-max">{title}</p>
       {<AlbumsCat albums={albums}></AlbumsCat>}
 
-      <Link className="" to="/new">
+      <Link className="" to={link}>
         <p className="my-6 capitalize mx-auto border-4 border-orange-500 px-4 py-2 text-center max-w-80">
-          see all new releases
+          {text}
         </p>
       </Link>
     </div>

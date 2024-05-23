@@ -26,35 +26,35 @@ const LandingPage = () => {
       >
         <div>
           <img
-            className="max-h-44 sm:max-h-64 object-cover md:max-h-72"
+            className="max-h-44 sm:max-h-64 object-cover md:max-h-72 2xl:max-h-80"
             src={photo1}
             alt=""
           />
         </div>
         <div>
           <img
-            className="max-h-44 sm:max-h-64 object-cover md:max-h-72"
+            className="max-h-44 sm:max-h-64 object-cover md:max-h-72 2xl:max-h-80"
             src={photo2}
             alt=""
           />
         </div>
         <div>
           <img
-            className="max-h-44 sm:max-h-64 object-cover md:max-h-72"
+            className="max-h-44 sm:max-h-64 object-cover md:max-h-72 2xl:max-h-80"
             src={photo3}
             alt=""
           />
         </div>
         <div>
           <img
-            className="max-h-44 sm:max-h-64 object-cover md:max-h-72"
+            className="max-h-44 sm:max-h-64 object-cover md:max-h-72 2xl:max-h-80"
             src={photo5}
             alt=""
           />
         </div>
         <div>
           <img
-            className="max-h-44 sm:max-h-64 object-cover md:max-h-72"
+            className="max-h-44 sm:max-h-64 object-cover md:max-h-72 2xl:max-h-80"
             src={photo6}
             alt=""
           />
@@ -76,7 +76,11 @@ const LandingPage = () => {
             search="New Releases"
             link="/new"
             image={record}
+            title="New Releases"
           />
+        </div>
+        <div className="flex flex-wrap lg:flex-nowrap gap-4 ">
+          <CTA link="/sale" image={record} id="sale" title="Sale" />
         </div>
         <Deliveries />
       </div>

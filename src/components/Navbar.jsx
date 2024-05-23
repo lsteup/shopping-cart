@@ -56,6 +56,11 @@ const Navbar = () => {
                   New Releases
                 </Link>
               </li>
+              <li>
+                <Link className=" hover:bg-orange-400 block p-2 " to="sale">
+                  Sale
+                </Link>
+              </li>
 
               <li>
                 <Link className="hover:bg-orange-400 block p-2 " to="cart">
@@ -94,6 +99,16 @@ const Navbar = () => {
               to="new"
             >
               New
+            </Link>
+          </li>
+          <li>
+            <Link
+              className={`${
+                location.startsWith("/sale") && "underline"
+              } hover:underline decoration-2 underline-offset-4 decoration-orange-500  `}
+              to="sale"
+            >
+              Sale
             </Link>
           </li>
 

@@ -3,8 +3,9 @@ import Loading from "../components/Loading";
 import { useAppContext } from "../pages/Home";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { sale } from "../../data";
 
-const Feature = ({ title, albumId }) => {
+const Feature = ({ title, albumId, id }) => {
   const [loading, setIsLoading] = useState(true);
   const [album, setAlbum] = useState();
   const context = useAppContext();

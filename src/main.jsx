@@ -5,14 +5,13 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Albums from "./pages/Albums.jsx";
-import Artists from "./pages/Artists.jsx";
-import Genres from "./pages/Genres.jsx";
 import Cart from "./pages/Cart.jsx";
 import Home from "./pages/Home.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import SingleAlbum from "./pages/SingleAlbum.jsx";
 import SingleArtist from "./pages/SingleArtist.jsx";
 import New from "./pages/New.jsx";
+import Sale from "./pages/Sale.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,11 +20,10 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <LandingPage /> },
       { path: "albums", element: <Albums /> },
-      { path: "artists", element: <Artists /> },
+      { path: "sale", element: <Sale /> },
       { path: "cart", element: <Cart /> },
       { path: "new", element: <New /> },
       { path: "albums/:albumId", element: <SingleAlbum /> },
-      { path: "artists/:artistId", element: <SingleArtist /> },
     ],
   },
 ]);
