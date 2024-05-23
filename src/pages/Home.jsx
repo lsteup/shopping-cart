@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Footer from "../components/Footer";
 
 import { createContext } from "react";
 import CompanyFooter from "../components/CompanyFooter";
@@ -13,9 +12,7 @@ export const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 const Home = () => {
-  useEffect(() => {
-    tokenGetter();
-  }, []);
+  const [token, setToken] = useState();
 
   const tokenGetter = async () => {
     try {
@@ -36,18 +33,20 @@ const Home = () => {
       );
     }
   };
+
+  useEffect(() => {
+    tokenGetter();
+  }, []);
+
   const [cart, setCart] = useState([
     { id: "4iWPBUkjEtpk5hzErpq8WA", quantity: 1, price: 25 },
     { id: "2bYCNZfxZrTUv1CHXkz2d2", quantity: 3, price: 36 },
     { id: "0n7dd40ERs4ucG5KarwZxM", quantity: 4, price: 21 },
   ]);
 
-  const [token, setToken] = useState();
-
   const addToCart = ({ id, quantity, price }) => {
     setCart([...cart, { id: id, quantity, price }]);
     toast("Added To Your Cart");
-    console.log(cart);
   };
 
   const removeFromCart = (item) => {
@@ -93,6 +92,28 @@ const Home = () => {
   const emptyCart = () => {
     setCart([]);
   };
+
+  const fetchAlbums = async (num) => {
+    const config = {
+      method: "get",
+      url: `https://api.spotify.com/v1/browse/new-releases?limit=${num}`,
+      headers: {
+        Authorization: `Bearer ${newToken}`,
+      },
+    };
+
+    try {
+      const response = await axios(config);
+      console.log(response);
+      const albums = response.data.albums.items.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+      return albums;
+    } catch (error) {
+      console.error("Error making request:", error);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -103,6 +124,7 @@ const Home = () => {
         removeItem,
         addItem,
         token,
+        fetchAlbums,
       }}
     >
       <div className="min-h-screen bg-gradient-to-r from-sky-50 to-orange-50 flex flex-col justify-between">
