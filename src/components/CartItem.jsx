@@ -7,8 +7,9 @@ import { GrSubtractCircle } from "react-icons/gr";
 const CartItem = ({ item }) => {
   const [album, setAlbum] = useState();
   const [loading, setIsLoading] = useState(true);
-  const apiKey = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN;
-  const { cart, removeFromCart, removeItem, addItem } = useAppContext();
+
+  const { cart, removeFromCart, removeItem, addItem, token } = useAppContext();
+  const apiKey = token;
   const quantity = cart.filter((cartItem) => cartItem.id === item)[0].quantity;
 
   const fetchAlbum = async () => {

@@ -6,12 +6,14 @@ import Title from "../components/Title";
 import Products from "../components/Products";
 import Loading from "../components/Loading";
 import Deliveries from "../components/Deliveries";
+import { useAppContext } from "./Home";
 
 const New = () => {
   const [albums, setAlbums] = useState([]);
   const [loading, setIsLoading] = useState(true);
   const total = albums.length;
-  const apiKey = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN;
+  const { token } = useAppContext();
+  const apiKey = token;
   const fetchAlbums = async () => {
     const config = {
       method: "get",

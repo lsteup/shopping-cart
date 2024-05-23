@@ -12,11 +12,36 @@ export const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 const Home = () => {
+  useEffect(() => {
+    tokenGetter();
+  }, []);
+
+  const tokenGetter = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5050/get_access_token",
+        {
+          auth: {
+            username: import.meta.env.VITE_ADMIN_USER,
+            password: import.meta.env.VITE_ADMIN_PASS,
+          },
+        }
+      );
+      setToken(response.data.access_token);
+    } catch (error) {
+      console.error(
+        "Error getting access token:",
+        error.response ? error.response.data : error.message
+      );
+    }
+  };
   const [cart, setCart] = useState([
     { id: "4iWPBUkjEtpk5hzErpq8WA", quantity: 1, price: 25 },
     { id: "2bYCNZfxZrTUv1CHXkz2d2", quantity: 3, price: 36 },
     { id: "0n7dd40ERs4ucG5KarwZxM", quantity: 4, price: 21 },
   ]);
+
+  const [token, setToken] = useState();
 
   const addToCart = ({ id, quantity, price }) => {
     setCart([...cart, { id: id, quantity, price }]);
@@ -76,6 +101,7 @@ const Home = () => {
         emptyCart,
         removeItem,
         addItem,
+        token,
       }}
     >
       <div className="min-h-screen bg-gradient-to-r from-sky-50 to-orange-50 flex flex-col justify-between">

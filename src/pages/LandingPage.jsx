@@ -14,12 +14,6 @@ const LandingPage = () => {
           link="/new"
           image={record}
         />
-        <CTA
-          slogan="Connect with Your Favorite Voices"
-          search="Artists"
-          link="/artists"
-          image={singer}
-        />
       </div>
     </div>
   );

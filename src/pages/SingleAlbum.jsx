@@ -12,13 +12,13 @@ import Deliveries from "../components/Deliveries";
 const SingleAlbum = () => {
   const [price, setPrice] = useState();
   const [remaining, setRemaining] = useState();
-  const { addToCart } = useAppContext();
+  const { addToCart, token } = useAppContext();
   const [quantity, setQuantity] = useState(1);
 
   const id = window.location.href.split("/")[4];
   const [album, setAlbum] = useState("");
   const [loading, setIsLoading] = useState(true);
-  const apiKey = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN;
+  const apiKey = token;
 
   useEffect(() => {
     setPrice((Math.random() * 26 + 25).toFixed(0));
