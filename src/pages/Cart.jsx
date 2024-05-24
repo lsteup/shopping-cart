@@ -6,6 +6,7 @@ import Title from "../components/Title";
 import Deliveries from "../components/Deliveries";
 import { Link } from "react-router-dom";
 import CartItemThumb from "../components/CartItemThumb";
+import cartImg from "/cart.jpg";
 
 const Cart = () => {
   const { cart, emptyCart } = useAppContext();
@@ -33,7 +34,7 @@ const Cart = () => {
         >
           Continue Shopping
         </Link>
-        <div className="md:hidden flex flex-col gap-4 mb-4">
+        <div className="lg:hidden flex flex-col gap-4 mb-4">
           {cart.map((item) => {
             return (
               <CartItemThumb
@@ -44,40 +45,48 @@ const Cart = () => {
             );
           })}
         </div>
-        <div className="hidden md:grid grid-cols-6 justify-center place-content-start max-w-4xl ">
-          <p className="col-span-3 uppercase">product</p>
-          <p className="uppercase">price</p>
-          <p className="uppercase">amount</p>
-          <p className="uppercase">total</p>
-          <div className="grid col-span-6 border-y-2  my-6 py-6 ">
-            {cart.map((item) => {
-              return (
-                <CartItem
-                  quantity={item.quantity}
-                  item={item.id}
-                  key={item.id}
-                />
-              );
-            })}
+
+        <div className="2xl:flex gap-8 items-center">
+          <div className="hidden md:grid grid-cols-6  max-w-4xl w-full self-end items-center  ">
+            <p className="col-span-3 capitalize text-sm">product</p>
+            <p className="capitalize text-sm">price</p>
+            <p className="capitalize text-sm">amount</p>
+            <p className="capitalize text-sm">total</p>
+            <div className="grid col-span-6 border-y-2  my-6 py-6 items-center">
+              {cart.map((item) => {
+                return (
+                  <CartItem
+                    quantity={item.quantity}
+                    item={item.id}
+                    key={item.id}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
-        <div className="bg-zinc-100 p-6 border border-black flex flex-col gap-4">
-          <div className="flex justify-between text-sm font-light">
-            <p className="font-semibold">Subtotal:</p>
-            <p className="font-bold">€ {totalPrice},00</p>
-          </div>
-          <div className="flex justify-between text-sm font-light">
-            <p className="font-semibold">Quantity:</p>
-            <p className="">{totalItems} items</p>
-          </div>
-          <p>Taxes included. Shipping calculated at checkout.</p>
-          <div
-            className="border-4 border-orange-500 p-2 text-center"
-            onClick={() =>
-              toast.success("order placed (functionality not in place)")
-            }
-          >
-            Go To Checkout
+          <div className="bg-zinc-100 p-6 border border-black flex flex-col gap-4 max-w-xl justify-self-end w-full self-center ">
+            <p className="text-center text-2xl font-semibold mb-2">
+              Cart Totals
+            </p>
+            <p className="mb-2 self-center">
+              Taxes included. Shipping calculated at checkout.
+            </p>
+            <div className="flex justify-between w-full text-base font-light max-w-md self-center">
+              <p className="font-semibold">Subtotal:</p>
+              <p className="font-bold">€ {totalPrice},00</p>
+            </div>
+            <div className="flex justify-between w-full text-base font-light max-w-md self-center">
+              <p className="font-semibold">Quantity:</p>
+              <p className="">{totalItems} items</p>
+            </div>
+            <div
+              className="border-4 border-orange-500 p-2 text-center max-w-md self-center w-full mt-2"
+              onClick={() =>
+                toast.success("order placed (functionality not in place)")
+              }
+            >
+              Go To Checkout
+            </div>
           </div>
         </div>
       </div>

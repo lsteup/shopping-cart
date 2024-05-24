@@ -65,9 +65,9 @@ const CartItemThumb = ({ item }) => {
         <div className="flex justify-between text-xs font-light">
           <p>Product:</p>
 
-          <div>
-            <p className="font-normal">{artist}</p>
-            <p className="font-normal">{name}</p>
+          <div className="text-right font-semibold text-sm ">
+            <p className=" pb-2 ">{artist}</p>
+            <p className="  ">{name}</p>
           </div>
         </div>
         <div className="flex justify-between text-xs font-light">
@@ -82,7 +82,7 @@ const CartItemThumb = ({ item }) => {
             <p onClick={() => removeItem(item)} className="text-2xl">
               <GrSubtractCircle size="1em" />
             </p>
-            <p className=" md:text-lg">{quantity}</p>
+            <p className=" md:text-lg font-semibold">{quantity}</p>
             <p className="text-2xl" onClick={() => addItem(item)}>
               <IoAddCircleOutline size="1.2em" />
             </p>
