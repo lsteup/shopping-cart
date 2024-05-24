@@ -6,7 +6,7 @@ import { AlbumsCat } from "../components/AlbumsCat";
 import Loading from "./Loading";
 import { sale, vintage } from "../../data";
 
-const CTA = ({ title, id, link }) => {
+const CTA = ({ title, id, link, cat }) => {
   const [albums, setAlbums] = useState();
   const [loading, setIsLoading] = useState(true);
   const context = useAppContext();
@@ -61,7 +61,7 @@ const CTA = ({ title, id, link }) => {
   return (
     <div className="mx-auto w-4/5">
       <p className="border-4 border-orange-500 px-4 py-2 w-max">{title}</p>
-      {<AlbumsCat albums={albums}></AlbumsCat>}
+      {<AlbumsCat albums={albums} cat={cat}></AlbumsCat>}
 
       <Link className="" to={link}>
         <p className="my-6 capitalize mx-auto border-4 border-orange-500 px-4 py-2 text-center max-w-80">

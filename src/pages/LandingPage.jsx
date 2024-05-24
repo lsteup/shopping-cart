@@ -80,10 +80,10 @@ const LandingPage = () => {
           />
         </div>
         <div className="flex flex-wrap lg:flex-nowrap gap-4 ">
-          <CTA link="/sale" image={record} id="sale" title="Sale" />
+          <CTA link="/sale" image={record} id="sale" title="Sale" cat="sale" />
         </div>
         <div className="flex flex-wrap lg:flex-nowrap gap-4 ">
-          <CTA link="/vintage" id="vintage" title="Vintage" />
+          <CTA link="/vintage" id="vintage" title="Vintage" cat="vintage" />
         </div>
         <Deliveries />
       </div>

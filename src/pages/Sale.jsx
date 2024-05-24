@@ -53,13 +53,15 @@ const Sale = () => {
   if (loading) return <Loading />;
   return (
     <div className="">
-      <Title
-        title="Sale"
-        text="Journey through our extensive catalog of albums, where every record tells a story. From iconic classics to contemporary must-haves, there's an album waiting for you."
-      />
-      <SearchBar handleInput={handleInput} />
-      <Products num={total} />
-      <AlbumsCat albums={albums} cat="sale"></AlbumsCat>
+      <div className="w-11/12 mx-auto">
+        <Title
+          title="Sale"
+          text="Discover unbeatable deals on a curated selection of records and accessories—get your favorite tunes at irresistible prices."
+        />
+        <SearchBar handleInput={handleInput} />
+        <Products num={total} />
+        <AlbumsCat albums={albums} cat="sale"></AlbumsCat>
+      </div>
       <Deliveries />
     </div>
   );

@@ -15,6 +15,8 @@ const SingleAlbum = () => {
   const { addToCart, token } = useAppContext();
   const [quantity, setQuantity] = useState(1);
 
+  const location = window.location.pathname;
+
   const id = window.location.href.split("/")[4];
   const [album, setAlbum] = useState("");
   const [loading, setIsLoading] = useState(true);
@@ -23,7 +25,10 @@ const SingleAlbum = () => {
   console.log(album);
 
   useEffect(() => {
-    setPrice((Math.random() * 26 + 25).toFixed(0));
+    if (location.startsWith("/sale")) {
+      setPrice((Math.random() * 7 + 4).toFixed(0));
+    } else setPrice((Math.random() * 26 + 25).toFixed(0));
+
     setRemaining((Math.random() * 4 + 1).toFixed(0));
   }, []);
 
@@ -90,30 +95,33 @@ const SingleAlbum = () => {
                 </div>
               </div>
               <div className="mt-3 max-w-lg">
-                <div className="divide-y">
-                  <p className="uppercase  font-lg my-6">track list</p>
-                  {tracks.map((track) => {
-                    const seconds = Math.floor(track.duration_ms / 1000);
-                    const remainder =
-                      seconds % 60 < 10
-                        ? "0" + `${seconds % 60}`
-                        : seconds % 60;
-                    const time = `${Math.floor(seconds / 60)}:${remainder}`;
-                    return (
-                      <div
-                        className="flex gap-6 text-sm md:text-baseline"
-                        key={track.track_number}
-                      >
-                        <p className="font-light text-zinc-500 min-w-4">
-                          {track.track_number}
-                        </p>
-                        <p className="font-light grow font-zinc-800">
-                          {track.name}
-                        </p>
-                        <p className="font-light font-zinc-800">{time}</p>
-                      </div>
-                    );
-                  })}
+                <div>
+                  <div className="divide-y">
+                    <p className="uppercase  font-lg my-6">track list</p>
+                    {tracks.map((track) => {
+                      const seconds = Math.floor(track.duration_ms / 1000);
+                      const remainder =
+                        seconds % 60 < 10
+                          ? "0" + `${seconds % 60}`
+                          : seconds % 60;
+                      const time = `${Math.floor(seconds / 60)}:${remainder}`;
+                      return (
+                        <div
+                          className="flex py-1 gap-6 text-sm md:text-baseline "
+                          key={track.track_number}
+                        >
+                          <p className="font-light text-zinc-500 min-w-4">
+                            {track.track_number}
+                          </p>
+                          <p className="font-light grow font-zinc-800">
+                            {track.name}
+                          </p>
+                          <p className="font-light font-zinc-800">{time}</p>
+                        </div>
+                      );
+                    })}
+                    <p></p>
+                  </div>
 
                   <div className=" flex flex-col gap-4 p-4 items-end mt-4 w-full">
                     <div>
@@ -135,7 +143,7 @@ const SingleAlbum = () => {
                           onClick={() => decrement()}
                           size="1.4em"
                         />
-                        <p className="text-lg font-semibold text-sm">
+                        <p className="lg:text-lg font-semibold text-sm">
                           {quantity}
                         </p>
                         <IoAddCircleOutline

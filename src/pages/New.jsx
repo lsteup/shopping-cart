@@ -47,7 +47,7 @@ const New = () => {
         text="Be the first to discover the latest hits and fresh sounds. Explore our ever-updating collection of new releases and find your next favorite record."
       />
       <Products num={total} />
-      <AlbumsCat albums={albums}></AlbumsCat>
+      <AlbumsCat albums={albums} cat="albums"></AlbumsCat>
       <Deliveries />
     </div>
   );

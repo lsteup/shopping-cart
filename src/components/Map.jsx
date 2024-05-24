@@ -2,9 +2,13 @@ import { Link, useLocation } from "react-router-dom";
 
 const Map = ({ album, artist }) => {
   const location = useLocation().pathname;
-  const previous = location.startsWith("/albums") ? "albums" : "artists";
+  let previous;
+  if (location.startsWith("/albums")) previous = "albums";
+  else if (location.startsWith("/sale")) previous = "sale";
+  else if (location.startsWith("/vintage")) previous = "vintage";
+
   return (
-    <nav className="flex justify-between capitalize text-xs mb-8 max-w-80 mx-auto">
+    <nav className="flex justify-between capitalize text-xs mb-8 max-w-md mx-auto ">
       <Link className="hover:underline" to="/">
         home
       </Link>

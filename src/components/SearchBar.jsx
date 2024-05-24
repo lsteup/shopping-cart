@@ -16,7 +16,7 @@ const SearchBar = ({ handleInput }) => {
         <input
           type="search"
           id="default-search"
-          class="block w-full p-4 ps-10 text-sm text-gray-900 border-4 rounded-sm border-zinc-950 bg-gray-50"
+          class="block w-full p-4 ps-10 text-sm text-gray-900 border-2  border-zinc-950 bg-gray-50"
           placeholder="Search ..."
           onChange={(e) => handleInput(e.target.value)}
         />

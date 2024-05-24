@@ -51,14 +51,16 @@ const Albums = () => {
 
   if (loading) return <Loading />;
   return (
-    <div className="">
-      <Title
-        title="Albums"
-        text="Journey through our extensive catalog of albums, where every record tells a story. From iconic classics to contemporary must-haves, there's an album waiting for you."
-      />
-      <SearchBar handleInput={handleInput} />
-      <Products num={total} />
-      <AlbumsCat albums={albums} cat="albums"></AlbumsCat>
+    <div>
+      <div className="w-11/12 mx-auto">
+        <Title
+          title="Albums"
+          text="Journey through our extensive catalog of albums, where every record tells a story. From iconic classics to contemporary must-haves, there's an album waiting for you."
+        />
+        <SearchBar handleInput={handleInput} />
+        <Products num={total} />
+        <AlbumsCat albums={albums} cat="albums"></AlbumsCat>
+      </div>
       <Deliveries />
     </div>
   );

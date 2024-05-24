@@ -53,13 +53,15 @@ const Vintage = () => {
   if (loading) return <Loading />;
   return (
     <div className="">
-      <Title
-        title="Vintage"
-        text="Journey through our extensive catalog of albums, where every record tells a story. From iconic classics to contemporary must-haves, there's an album waiting for you."
-      />
-      <SearchBar handleInput={handleInput} />
-      <Products num={total} />
-      <AlbumsCat albums={albums} cat="vintage"></AlbumsCat>
+      <div className="w-11/12 mx-auto">
+        <Title
+          title="Vintage"
+          text="Explore our exclusive collection of vintage records, where timeless classics and rare gems await your discovery."
+        />
+        <SearchBar handleInput={handleInput} />
+        <Products num={total} />
+        <AlbumsCat albums={albums} cat="vintage"></AlbumsCat>
+      </div>
       <Deliveries />
     </div>
   );
