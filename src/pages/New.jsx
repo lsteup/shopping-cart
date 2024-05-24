@@ -42,12 +42,14 @@ const New = () => {
   if (loading) return <Loading />;
   return (
     <div className="">
-      <Title
-        title="New Releases"
-        text="Be the first to discover the latest hits and fresh sounds. Explore our ever-updating collection of new releases and find your next favorite record."
-      />
-      <Products num={total} />
-      <AlbumsCat albums={albums} cat="albums"></AlbumsCat>
+      <div className="w-11/12 mx-auto">
+        <Title
+          title="New Releases"
+          text="Be the first to discover the latest hits and fresh sounds. Explore our ever-updating collection of new releases and find your next favorite record."
+        />
+        <Products num={total} />
+        <AlbumsCat albums={albums} cat="albums"></AlbumsCat>
+      </div>
       <Deliveries />
     </div>
   );

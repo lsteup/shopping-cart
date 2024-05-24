@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { IoMdClose } from "react-icons/io";
 import { useAppContext } from "../pages/Home";
-import { IoAddCircleOutline } from "react-icons/io5";
 import { GrSubtractCircle } from "react-icons/gr";
+import { IoAddCircleOutline } from "react-icons/io5";
 
-const CartItem = ({ item }) => {
+const CartItemThumb = ({ item }) => {
   const [album, setAlbum] = useState();
   const [loading, setIsLoading] = useState(true);
 
@@ -40,38 +41,43 @@ const CartItem = ({ item }) => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    fetchAlbum();
-  }, []);
+    if (token) {
+      setIsLoading(true);
+      fetchAlbum();
+    }
+  }, [token]);
+
+  console.log(album);
 
   if (loading) return <div>loading</div>;
   if (!loading) {
     const img = album.images[1].url;
     const name = album.name;
     const artist = album.artists[0].name;
+
     return (
-      <div>
-        <div className=""></div>
-        <div className="hidden md:grid grid-cols-6  my-4 place-content-start font-light text-xs md:text-base ">
-          <div className="col-span-3 flex gap-6 ">
-            <img
-              className="border border-zinc-950 aspect-square shrink-0 max-w-32"
-              src={img}
-              alt=""
-            />
-            <div className="">
-              <p className="font-semibold md:text-lg">
-                {artist} - {name}
-              </p>
-              <p
-                onClick={() => removeFromCart(item)}
-                className="font-light underline font-sm"
-              >
-                remove
-              </p>
-            </div>
+      <div className="bg-zinc-100 p-6 border border-black flex flex-col gap-4">
+        <div className="flex justify-between">
+          <img className="max-w-24" src={img} alt="" />
+
+          <IoMdClose onClick={() => removeFromCart(item)} />
+        </div>
+        <div className="flex justify-between text-xs font-light">
+          <p>Product:</p>
+
+          <div>
+            <p className="font-normal">{artist}</p>
+            <p className="font-normal">{name}</p>
           </div>
-          <p className=" md:text-lg">€{album.price},00</p>
+        </div>
+        <div className="flex justify-between text-xs font-light">
+          <p>Price:</p>
+
+          <p className="">€ {album.price},00</p>
+        </div>
+        <div className="flex justify-between text-xs font-light">
+          <p>Quantity:</p>
+
           <div className="justify-start leading-3 flex h-7  items-center gap-2">
             <p onClick={() => removeItem(item)} className="text-2xl">
               <GrSubtractCircle size="1em" />
@@ -81,10 +87,14 @@ const CartItem = ({ item }) => {
               <IoAddCircleOutline size="1.2em" />
             </p>
           </div>
-          <p className="md:text-lg">€{quantity * album.price},00</p>
+        </div>
+        <div className="flex justify-between text-xs font-light">
+          <p>Subtotal:</p>
+
+          <p className="">€ {quantity * album.price},00</p>
         </div>
       </div>
     );
   }
 };
-export default CartItem;
+export default CartItemThumb;

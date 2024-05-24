@@ -24,7 +24,7 @@ const Navbar = () => {
         {!navbar && (
           <div
             onClick={() => setNavbar(true)}
-            className=" flex items-center justify-between p-2  "
+            className=" flex items-center justify-between p-2 sticky top-0 z-50 "
           >
             <Link to="/">
               <img className="h-20" src={logo} alt="" />

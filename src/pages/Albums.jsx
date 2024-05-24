@@ -43,8 +43,10 @@ const Albums = () => {
   }, []);
 
   const handleInput = (search) => {
-    const newAlbums = allAlbums.filter((album) =>
-      album.name.toLowerCase().startsWith(search.toLowerCase())
+    const newAlbums = allAlbums.filter(
+      (album) =>
+        album.name.toLowerCase().startsWith(search.toLowerCase()) ||
+        album.artists[0].name.toLowerCase().startsWith(search.toLowerCase())
     );
     setAlbums(newAlbums);
   };
