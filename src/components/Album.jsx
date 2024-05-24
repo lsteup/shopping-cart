@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-const Album = ({ img, name, type, tracks, artist, id }) => {
+const Album = ({ img, name, type, tracks, artist, id, cat }) => {
   return (
     <Link
-      to={`/albums/${id}`}
+      to={`/${cat}/${id}`}
       className=" hover:underline  max-w-48 sm:max-w-64 "
     >
       <img className="border border-black   min-w-0 min-h-0" src={img} alt="" />

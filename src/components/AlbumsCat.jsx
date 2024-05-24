@@ -1,6 +1,6 @@
 import Album from "./Album";
 
-export const AlbumsCat = ({ albums }) => {
+export const AlbumsCat = ({ albums, cat }) => {
   return (
     <section className="mt-10 px-2 grid grid-cols-[repeat(2,minmax(100px,500px))] md:grid-cols-[repeat(5,minmax(100px,500px))] gap-4  justify-center">
       {albums.map((album) => {
@@ -21,6 +21,7 @@ export const AlbumsCat = ({ albums }) => {
             id={id}
             key={id}
             type={type}
+            cat={cat}
           />
         );
       })}

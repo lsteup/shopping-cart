@@ -26,6 +26,8 @@ const router = createBrowserRouter([
       { path: "new", element: <New /> },
       { path: "vintage", element: <Vintage /> },
       { path: "albums/:albumId", element: <SingleAlbum /> },
+      { path: "sale/:albumId", element: <SingleAlbum /> },
+      { path: "vintage/:albumId", element: <SingleAlbum /> },
     ],
   },
 ]);

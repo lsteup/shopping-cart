@@ -39,12 +39,12 @@ const Feature = ({ title, albumId, id }) => {
 
   if (loading) return <Loading />;
   return (
-    <div className="mt-3 w-4/5 mx-auto  md:w-full ">
+    <div className="mt-3  mx-auto  md:w-full ">
       <p className="border-4 border-orange-500 px-4 py-2 w-max">{title}</p>
       <div className="pt-6 pb-12">
         <Link className="" to={`/albums/${albumId}`}>
           <img
-            className="border border-black max-w-72 sm:max-w-96 md:max-w-72 lg:max-w-80 xl:max-w-96"
+            className="border border-black max-w-56 sm:max-w-96 md:max-w-72 lg:max-w-80 xl:max-w-96"
             src={album.images[0].url}
             alt=""
           />

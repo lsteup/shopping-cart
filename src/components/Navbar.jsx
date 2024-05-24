@@ -20,11 +20,11 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="md:hidden border-b-2 border-zinc-800">
+      <nav className="md:hidden border-b-2 border-zinc-800 bg-gradient-to-r from-sky-50 to-orange-50 sticky top-0 z-50">
         {!navbar && (
           <div
             onClick={() => setNavbar(true)}
-            className="flex items-center justify-between p-2  "
+            className=" flex items-center justify-between p-2  "
           >
             <Link to="/">
               <img className="h-20" src={logo} alt="" />

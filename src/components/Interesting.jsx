@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Loading from "./Loading";
 import Album from "./Album";
 import { useAppContext } from "../pages/Home";
+import { AlbumsCat } from "./AlbumsCat";
 
 const Interesting = () => {
   const [albums, setAlbums] = useState();
@@ -30,38 +31,18 @@ const Interesting = () => {
   };
 
   useEffect(() => {
-    fetchAlbums();
-  }, []);
+    if (token) {
+      fetchAlbums();
+    }
+  }, [token]);
 
   if (loading) return <Loading />;
   return (
     <div className="my-16">
-      <p className="font-semibold uppercase text-lg my-16">
-        You might also be interested in
-      </p>
+      <p className=" uppercase text-lg">You May also find interesting ...</p>
       {loading && <loading />}
-      <div className="flex gap-20">
-        {albums.map((album) => {
-          const artist = album.artists[0].name;
-          const name = album.name;
-          const date = album.release_date;
-          const img = album.images[0].url;
-          const tracks = album.total_tracks;
-          const id = album.id;
-          return (
-            <div key={id} className="shrink max-w-28">
-              <Album
-                img={img}
-                name={name}
-                artist={artist}
-                date={date}
-                tracks={tracks}
-                id={id}
-                key={id}
-              />
-            </div>
-          );
-        })}
+      <div className="flex flex-wrap gap-20">
+        <AlbumsCat albums={albums} />
       </div>
     </div>
   );

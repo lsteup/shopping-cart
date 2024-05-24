@@ -59,7 +59,7 @@ const Vintage = () => {
       />
       <SearchBar handleInput={handleInput} />
       <Products num={total} />
-      <AlbumsCat albums={albums}></AlbumsCat>
+      <AlbumsCat albums={albums} cat="vintage"></AlbumsCat>
       <Deliveries />
     </div>
   );

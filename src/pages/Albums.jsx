@@ -58,7 +58,7 @@ const Albums = () => {
       />
       <SearchBar handleInput={handleInput} />
       <Products num={total} />
-      <AlbumsCat albums={albums}></AlbumsCat>
+      <AlbumsCat albums={albums} cat="albums"></AlbumsCat>
       <Deliveries />
     </div>
   );

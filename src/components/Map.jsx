@@ -4,18 +4,16 @@ const Map = ({ album, artist }) => {
   const location = useLocation().pathname;
   const previous = location.startsWith("/albums") ? "albums" : "artists";
   return (
-    <nav className="flex gap-1 font-semibold uppercase text-xs mb-8">
+    <nav className="flex justify-between capitalize text-xs mb-8 max-w-80 mx-auto">
       <Link className="hover:underline" to="/">
         home
       </Link>
       <p> → </p>
-      <Link className="hover:underline" to={`/${previous}`}>
+      <Link className="hover:underline uppercase " to={`/${previous}`}>
         {previous}
       </Link>
       <p> → </p>
-      <p>
-        {artist} - {album}
-      </p>
+      <p className="text-zinc-500">{album}</p>
     </nav>
   );
 };

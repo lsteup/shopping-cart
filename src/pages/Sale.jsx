@@ -59,7 +59,7 @@ const Sale = () => {
       />
       <SearchBar handleInput={handleInput} />
       <Products num={total} />
-      <AlbumsCat albums={albums}></AlbumsCat>
+      <AlbumsCat albums={albums} cat="sale"></AlbumsCat>
       <Deliveries />
     </div>
   );
