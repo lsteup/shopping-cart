@@ -58,7 +58,6 @@ const Sale = () => {
           title="Sale"
           text="Discover unbeatable deals on a curated selection of records and accessories—get your favorite tunes at irresistible prices."
         />
-        <SearchBar handleInput={handleInput} />
         <Products num={total} />
         <AlbumsCat albums={albums} cat="sale"></AlbumsCat>
       </div>

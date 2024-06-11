@@ -25,7 +25,8 @@ const Home = () => {
           },
         }
       );
-      setToken(response.data.access_token);
+      if (response.data.access_token) setToken(response.data.access_token);
+      else console.log("could not get token");
     } catch (error) {
       console.error(
         "Error getting access token:",
@@ -38,11 +39,7 @@ const Home = () => {
     tokenGetter();
   }, []);
 
-  const [cart, setCart] = useState([
-    { id: "4iWPBUkjEtpk5hzErpq8WA", quantity: 1, price: 25 },
-    { id: "2bYCNZfxZrTUv1CHXkz2d2", quantity: 3, price: 36 },
-    { id: "0n7dd40ERs4ucG5KarwZxM", quantity: 4, price: 21 },
-  ]);
+  const [cart, setCart] = useState([]);
 
   const addToCart = ({ id, quantity, price }) => {
     setCart([...cart, { id: id, quantity, price }]);

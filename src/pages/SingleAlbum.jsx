@@ -8,6 +8,7 @@ import { GrSubtractCircle } from "react-icons/gr";
 import Loading from "../components/Loading";
 import Interesting from "../components/Interesting";
 import Deliveries from "../components/Deliveries";
+import { useParams } from "react-router-dom";
 
 const SingleAlbum = () => {
   const [price, setPrice] = useState();
@@ -17,7 +18,8 @@ const SingleAlbum = () => {
 
   const location = window.location.pathname;
 
-  const id = window.location.href.split("/")[4];
+  const { albumId } = useParams();
+
   const [album, setAlbum] = useState("");
   const [loading, setIsLoading] = useState(true);
   const apiKey = token;
@@ -35,7 +37,7 @@ const SingleAlbum = () => {
   const fetchAlbum = async () => {
     const config = {
       method: "get",
-      url: `https://api.spotify.com/v1/albums/${id}`,
+      url: `https://api.spotify.com/v1/albums/${albumId}`,
       headers: {
         Authorization: `Bearer ${apiKey}`,
       },
@@ -53,7 +55,7 @@ const SingleAlbum = () => {
 
   useEffect(() => {
     fetchAlbum();
-  }, []);
+  }, [albumId]);
 
   if (loading) return <Loading />;
 
@@ -157,7 +159,7 @@ const SingleAlbum = () => {
                     </div>
                     <div className="w-full">
                       <p
-                        className="border-4 uppercase font-semibold p-4  text-center  border-orange-500"
+                        className="cursor-pointer border-4 uppercase font-semibold p-4  text-center  border-orange-500"
                         onClick={() =>
                           addToCart({
                             quantity,

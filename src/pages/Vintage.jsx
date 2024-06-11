@@ -58,7 +58,6 @@ const Vintage = () => {
           title="Vintage"
           text="Explore our exclusive collection of vintage records, where timeless classics and rare gems await your discovery."
         />
-        <SearchBar handleInput={handleInput} />
         <Products num={total} />
         <AlbumsCat albums={albums} cat="vintage"></AlbumsCat>
       </div>

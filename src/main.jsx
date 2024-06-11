@@ -13,11 +13,13 @@ import SingleArtist from "./pages/SingleArtist.jsx";
 import New from "./pages/New.jsx";
 import Sale from "./pages/Sale.jsx";
 import Vintage from "./pages/Vintage.jsx";
+import Error from "./pages/Error.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <Error />,
     children: [
       { index: true, element: <LandingPage /> },
       { path: "albums", element: <Albums /> },

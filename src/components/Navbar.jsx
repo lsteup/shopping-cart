@@ -10,13 +10,13 @@ import logo from "/logo.png";
 
 const Navbar = () => {
   const location = useLocation().pathname;
+  let cart, items;
 
   const [navbar, setNavbar] = useState(false);
-  const { cart } = useAppContext();
-  const items = cart.reduce(
-    (accumulator, item) => accumulator + item.quantity,
-    0
-  );
+  if (useAppContext()) {
+    cart = useAppContext().cart;
+    items = cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
+  }
 
   return (
     <>

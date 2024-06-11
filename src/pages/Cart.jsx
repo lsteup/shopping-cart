@@ -7,6 +7,7 @@ import Deliveries from "../components/Deliveries";
 import { Link } from "react-router-dom";
 import CartItemThumb from "../components/CartItemThumb";
 import cartImg from "/cart.jpg";
+import Button from "../components/Button";
 
 const Cart = () => {
   const { cart, emptyCart } = useAppContext();
@@ -19,7 +20,18 @@ const Cart = () => {
   }, 0);
   console.log(totalPrice);
 
-  if (cart.length === 0) return <div>no items found</div>;
+  if (cart.length === 0)
+    return (
+      <div className="mx-auto text-center my-16">
+        <p className="my-8">You don't seem to have any items in your cart.</p>
+        <Link
+          to="/"
+          className="bg-white text-stone-800 px-3 py-2 border-2 border-orange-500"
+        >
+          Continue Shopping
+        </Link>
+      </div>
+    );
   return (
     <div>
       <div className=" p-4  flex flex-col justify-around h-4/5 w-5/6 mx-auto">
@@ -34,7 +46,7 @@ const Cart = () => {
         >
           Continue Shopping
         </Link>
-        <div className="lg:hidden flex flex-col gap-4 mb-4">
+        <div className="md:hidden flex flex-col gap-4 mb-4">
           {cart.map((item) => {
             return (
               <CartItemThumb

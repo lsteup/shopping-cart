@@ -5,6 +5,7 @@ import { useAppContext } from "../pages/Home";
 import { AlbumsCat } from "../components/AlbumsCat";
 import Loading from "./Loading";
 import { sale, vintage } from "../../data";
+import Button from "./Button";
 
 const CTA = ({ title, id, link, cat }) => {
   const [albums, setAlbums] = useState();
@@ -60,11 +61,11 @@ const CTA = ({ title, id, link, cat }) => {
 
   return (
     <div className="mx-auto w-4/5">
-      <p className="border-4 border-orange-500 px-4 py-2 w-max">{title}</p>
+      <p className=" border-4 border-orange-500 px-4 py-2 w-max  ">{title}</p>
       {<AlbumsCat albums={albums} cat={cat}></AlbumsCat>}
 
       <Link className="" to={link}>
-        <p className="my-6 capitalize mx-auto border-4 border-orange-500 px-4 py-2 text-center max-w-80">
+        <p className="my-6 text-sm capitalize mx-auto border-b-2 border-orange-500 font-medium px-1  text-center w-fit">
           {text}
         </p>
       </Link>

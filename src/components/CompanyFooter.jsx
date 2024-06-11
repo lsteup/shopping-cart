@@ -25,10 +25,14 @@ const CompanyFooter = () => {
             <p>Sunday 12.00 - 20.00</p>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-2 mt-6 ">
-          <p> © lsteup</p>
-          <FaGithub className="hover:scale-110" size="1.45em" />
-          <FaLinkedin className="hover:scale-110" size="1.45em" />
+        <div className="flex items-center text-lg justify-center gap-2 mt-6 ">
+          <p>© lsteup</p>
+          <a href="https://github.com/lsteup">
+            <FaGithub className="hover:scale-110" size="1.45em" />
+          </a>
+          <a href="https://www.linkedin.com/in/louisa-steup-6484aa2a8/">
+            <FaLinkedin className="hover:scale-110" size="1.45em" />
+          </a>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Loading from "./Loading";
 import Album from "./Album";
 import { useAppContext } from "../pages/Home";
 import { AlbumsCat } from "./AlbumsCat";
+import { useParams } from "react-router-dom";
 
 const Interesting = () => {
   const [albums, setAlbums] = useState();
@@ -42,7 +43,7 @@ const Interesting = () => {
       <p className=" uppercase text-lg">You May also find interesting ...</p>
       {loading && <loading />}
       <div className="flex flex-wrap gap-20">
-        <AlbumsCat albums={albums} />
+        <AlbumsCat albums={albums} cat="albums" />
       </div>
     </div>
   );

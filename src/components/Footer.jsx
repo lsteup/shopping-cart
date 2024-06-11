@@ -4,8 +4,8 @@ import { FaLinkedin } from "react-icons/fa";
 const Footer = () => {
   return (
     <div>
-      <div className="w-full bg-orange-500 p-4 text-zinc-50 justify-center text-xl flex items-center gap-4">
-        <p> © lsteup</p>
+      <div className="w-full bg-orange-500 p-4 text-zinc-50 justify-center  flex items-center gap-4">
+        <p className=""> © lsteup</p>
         <FaGithub className="hover:scale-110" size="1.45em" />
         <FaLinkedin className="hover:scale-110" size="1.45em" />
       </div>
