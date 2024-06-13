@@ -8,7 +8,7 @@ const Map = ({ album, artist }) => {
   else if (location.startsWith("/vintage")) previous = "vintage";
 
   return (
-    <nav className="flex justify-between capitalize text-xs mb-8 max-w-md mx-auto ">
+    <nav className="px-4 flex justify-between capitalize text-xs mb-8 max-w-md mx-auto ">
       <Link className="hover:underline" to="/">
         home
       </Link>
